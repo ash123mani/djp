@@ -905,7 +905,7 @@ function ReportSection() {
                 lineHeight: 1.1,
                 margin: "0 0 6px",
               }}>
-                FILE YOUR REPORT NOW
+                LOG THEIR ILL WORK
               </h3>
               <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 14, lineHeight: 1.5, margin: 0 }}>
                 Overtime, unpaid wages, harassment, discrimination — one form, all violations.
