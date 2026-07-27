@@ -443,7 +443,8 @@ function VisionSection() {
       />
       <div className="container animate-section" style={{ position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <span className="eyebrow">Chapter One — Filed Under: General Disgruntlement</span>
+          <span className="eyebrow">Chapter One — Filed Under: General Disgruntlement.</span>
+
           <h2
             className="section-title"
             style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
