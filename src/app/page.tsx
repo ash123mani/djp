@@ -12,35 +12,35 @@ const RIGHTS = [
     icon: "🛡️",
     title: "Right to Live with Dignity",
     article: "Article 21",
-    desc: "Every worker has the right to be treated with dignity, respect, and humanity at the workplace. Any abuse is a direct violation of your constitutional rights.",
+    desc: "Your boss thinks you're a machine. The Constitution disagrees. You have the right to be treated like a human being — not a printer that runs on chai and guilt.",
     span: false,
   },
   {
     icon: "🤝",
     title: "Right to Form Associations",
     article: "Article 19(1)(c)",
-    desc: "Workers have the constitutional right to form or join trade unions and collectively raise workplace concerns. They cannot fire you for organizing.",
+    desc: "You can form a union. You can collectively bargain. Your employer cannot fire you for organizing — though they'll try creative ways like 'restructuring' or 'culture fit'.",
     span: false,
   },
   {
     icon: "🚫",
     title: "Right Against Forced Labour",
     article: "Article 23",
-    desc: "No person shall be forced to work against their will or without lawful minimum payment. Paying below minimum wage is forced labour.",
+    desc: "If you're working 12 hours for 8 hours of pay, congratulations — you've been volunteered for forced labour. The Constitution has a word for that: unconstitutional.",
     span: true,
   },
   {
     icon: "⚖️",
     title: "Right to Equality",
     article: "Articles 14 & 15",
-    desc: "Every worker is entitled to equal protection under the law, without discrimination on grounds of religion, race, caste, sex, or place of birth.",
+    desc: "Religion, race, caste, sex, place of birth — none of these determine your worth. Your employer's opinion of your worth also doesn't determine your worth.",
     span: false,
   },
   {
     icon: "💰",
     title: "Equal Pay for Equal Work",
     article: "Article 39(d)",
-    desc: "Men and women performing the same or similar work must receive equal remuneration. No exceptions.",
+    desc: "If a man and a woman do the same job, they get the same pay. This is not a suggestion. This is the law. Your HR department's spreadsheet doesn't override the Constitution.",
     span: false,
   },
 ];
@@ -50,36 +50,36 @@ const STATUTORY_RIGHTS = [
     icon: "🏛️",
     title: "Code on Wages, 2019",
     items: [
-      "Minimum wage fixation and revision",
-      "Timely payment of wages — no delay beyond 7th of every month",
-      "Equal remuneration regardless of gender",
+      "Minimum wage fixation — because your landlord doesn't accept 'exposure' as rent",
+      "Timely payment — wages by the 7th, not 'when we feel like it'",
+      "Equal remuneration — gender doesn't determine your bank account's worth",
     ],
   },
   {
     icon: "🛡️",
     title: "OSH Code, 2020",
     items: [
-      "Safe workplace free from hazards",
-      "Weekly off — at least one day in seven",
-      "Annual leave with wages — at least one day for every 20 days worked",
+      "Safe workplace — hard hats are not optional fashion accessories",
+      "Weekly off — at least one day to remember what sunlight looks like",
+      "Annual leave — because even your laptop needs a reboot occasionally",
     ],
   },
   {
     icon: "📋",
     title: "Social Security Code, 2020",
     items: [
-      "Provident Fund (EPF) coverage for all eligible employees",
-      "Employees' State Insurance (ESIC) for medical & cash benefits",
-      "Maternity benefit — 26 weeks paid leave",
+      "EPF coverage — your future self will thank you, unlike your current employer",
+      "ESIC — medical benefits that actually cover medical things",
+      "Maternity benefit — 26 weeks paid, because growing a human is apparently work",
     ],
   },
   {
     icon: "💼",
     title: "Industrial Relations, 2020",
     items: [
-      "Right to form & register trade unions",
-      "Collective bargaining rights",
-      "Fair procedure for layoff, retrenchment & closure",
+      "Form trade unions — because WhatsApp groups don't count",
+      "Collective bargaining — strength in numbers, literally",
+      "Fair layoff procedure — they can't just ghost you after 20 years",
     ],
   },
 ];
@@ -88,22 +88,22 @@ const KNOW_YOUR_RIGHTS = [
   {
     number: "01",
     title: "Minimum Wage is NOT Optional",
-    body: "Every employer MUST pay at least the minimum wage fixed by the appropriate government. No agreement can reduce this. If you are paid less, you are a victim of wage theft.",
+    body: "Your employer must pay at least the minimum wage. 'But we're like a family here' is not a legal tender. If you're paid less, you're not underpaid — you're being robbed with extra steps.",
   },
   {
     number: "02",
     title: "No Contract? No Work!",
-    body: "The law requires written terms of employment for every worker. This includes salary, working hours, leave entitlement, and grounds for termination. Demand a written appointment letter.",
+    body: "No written appointment letter? That's not 'informal culture' — that's illegal. The law demands written terms. Your employer demands silence. Choose wisely.",
   },
   {
     number: "03",
     title: "Overtime = DOUBLE Pay",
-    body: "Any work beyond 9 hours a day or 48 hours a week MUST be compensated at TWICE the ordinary rate of wages. If you work extra, demand your overtime.",
+    body: "Beyond 9 hours a day or 48 hours a week? That's double pay territory. 'We need you to stay late' is not a get-out-of-paying card. Print the labour code. Frame it. Gift it to your manager.",
   },
   {
     number: "04",
     title: "Sexual Harassment is a CRIME",
-    body: "Every employer must constitute an Internal Complaints Committee. You have the right to file a formal complaint without fear of retaliation.",
+    body: "Every employer MUST have an Internal Complaints Committee. If they don't, they're breaking the law. Your right to a safe workplace is not negotiable — unlike your salary apparently.",
   },
 ];
 
@@ -195,11 +195,11 @@ function Navbar() {
 function Ticker() {
   const messages = [
     "WAGE THEFT IS A CRIME",
-    "12 HOUR SHIFTS WITHOUT OVERTIME IS ILLEGAL",
+    "12-HOUR SHIFTS WITHOUT OVERTIME IS ILLEGAL",
     "NO CONTRACT? NO WORK!",
-    "DEMAND YOUR DUES",
+    "YOUR BOSS IS NOT YOUR KING",
     "IGNORANCE IS THEIR BIGGEST WEAPON",
-    "REPORT EXPLOITATION TODAY",
+    "DEMAND YOUR DUES — THEY ALREADY SPENT THEM",
   ];
 
   return (
@@ -267,7 +267,7 @@ function HeroSection() {
           }}
         >
           <span style={{ background: "var(--color-blood)", borderRadius: "50%", width: 7, height: 7, display: "inline-block" }} />
-          KNOWLEDGE IS POWER
+          KNOWLEDGE IS POWER — USE IT
         </span>
 
         <h1
@@ -300,7 +300,7 @@ function HeroSection() {
             lineHeight: 1.6,
           }}
         >
-          Every worker has fundamental rights. Stop letting them exploit your ignorance. Know the law. Use it. Protect yourself.
+          You have rights. Your boss hopes you don't know them. This website exists to ruin that plan. No legal jargon. No fine print. Just the law — written in a language humans understand.
         </p>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 56 }}>
@@ -322,10 +322,10 @@ function HeroSection() {
           }}
         >
           {[
-            { value: "8+", label: "Fundamental Rights" },
-            { value: "4", label: "Labour Codes" },
-            { value: "50 Cr+", label: "Workers Protected" },
-            { value: "24/7", label: "Helplines Active" },
+            { value: "8+", label: "Rights You Didn't Know You Had" },
+            { value: "4", label: "Labour Codes Your Boss Hopes You'll Skip" },
+            { value: "50 Cr+", label: "Workers Who Deserve Better" },
+            { value: "24/7", label: "Helplines That Actually Work" },
           ].map((stat) => (
             <div key={stat.label}>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 3vw, 42px)", lineHeight: 1, color: "var(--color-blood)" }}>
@@ -372,7 +372,7 @@ function VisionSection() {
       />
       <div className="container animate-section" style={{ position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <span className="eyebrow">Chapter One</span>
+          <span className="eyebrow">Chapter One — Filed Under: General Disgruntlement</span>
           <h2
             className="section-title"
             style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
@@ -386,10 +386,10 @@ function VisionSection() {
 
         <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gap: 24 }}>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
-            Millions of workers in India sign contracts they cannot read, accept wages below the minimum, and suffer silent exploitation because nobody told them what the law says.
+            Millions of workers in India sign contracts they cannot read, accept wages below the minimum, and suffer silent exploitation — because nobody told them the law exists. The system runs on your silence. We&apos;re here to turn up the volume.
           </p>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
-            This platform exists to shatter that silence. No legal jargon. No fine print. Just clear, actionable knowledge of what you are owed.
+            This platform exists to shatter that silence. No legal jargon. No fine print. Just clear, actionable knowledge of what you are owed — written in a language your HR department hopes you never learn.
           </p>
         </div>
 
@@ -412,7 +412,7 @@ function VisionSection() {
                 fontWeight: 700,
               }}
             >
-              KNOWLEDGE IS YOURS. USE IT.
+              KNOWLEDGE IS YOURS. THEY CAN&apos;T REVOKE IT.
             </span>
           </div>
         </div>
@@ -427,13 +427,13 @@ function RightsGrid() {
       <div className="container">
         {/* Constitutional Rights */}
         <div className="animate-section" style={{ marginBottom: 96 }}>
-          <span className="eyebrow">Legal Framework</span>
+          <span className="eyebrow">Legal Framework — Yes, It Actually Exists</span>
           <h2 className="section-title" style={{ fontSize: "clamp(32px, 4.5vw, 52px)", margin: "0 0 16px" }}>
             Constitutional{" "}
             <span style={{ color: "var(--color-blood)" }}>Rights</span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.55, maxWidth: 640, margin: "0 0 48px" }}>
-            These are NOT privileges given by your boss. They are constitutional guarantees.
+            These are NOT privileges your boss graciously bestows upon you. They are constitutional guarantees. Your employer&apos;s opinion is irrelevant.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
@@ -478,7 +478,7 @@ function RightsGrid() {
 
         {/* Labour Codes */}
         <div className="animate-section">
-          <span className="eyebrow">Statutory Protection</span>
+          <span className="eyebrow">Statutory Protection — Laws That Actually Have Teeth</span>
           <h2 className="section-title" style={{ fontSize: "clamp(32px, 4.5vw, 52px)", margin: "0 0 16px" }}>
             The{" "}
             <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
@@ -486,7 +486,7 @@ function RightsGrid() {
             </span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.55, maxWidth: 640, margin: "0 0 48px" }}>
-            Enforced through the four Labour Codes that govern every workplace in India.
+            Four codes that govern every workplace in India. Your employer&apos;s lawyer has read them. Now it&apos;s your turn.
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(480px, 1fr))", gap: 20 }}>
@@ -529,7 +529,7 @@ function KnowYourRightsSection() {
     <section id="know-your-rights" className="section section-dark" style={{ padding: "120px 0" }}>
       <div className="container">
         <div className="animate-section" style={{ marginBottom: 72 }}>
-          <span className="eyebrow eyebrow-on-dark">Critical Knowledge</span>
+          <span className="eyebrow eyebrow-on-dark">Things Your Employer Hopes You Never Read</span>
           <h2
             className="section-title"
             style={{
@@ -543,7 +543,7 @@ function KnowYourRightsSection() {
             <span style={{ color: "var(--color-saffron-2)" }}>USE THEM.</span>
           </h2>
           <p style={{ color: "rgba(244,235,215,0.75)", fontSize: 18, lineHeight: 1.6, maxWidth: 560 }}>
-            Print this page. Paste it on the wall. Make sure everyone knows.
+            Print this page. Paste it on the break room wall. Screenshot it. Send it to every worker you know. The more people who know, the harder it is to exploit.
           </p>
         </div>
 
@@ -592,7 +592,7 @@ function KnowYourRightsSection() {
                     marginBottom: 16,
                   }}
                 >
-                  REQ / {item.number}
+                  KNOW / {item.number}
                 </span>
                 <h3
                   style={{
@@ -625,7 +625,7 @@ function ReportSection() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}>
           {/* Left: Info */}
           <div className="animate-section">
-            <span className="eyebrow">Take Action</span>
+            <span className="eyebrow">Stop Suffering in Silence</span>
             <h2
               className="section-title"
               style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
@@ -636,14 +636,14 @@ function ReportSection() {
               </span>
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, marginBottom: 40 }}>
-              If your employer is withholding wages, denying leave, or violating any labour law — do not stay silent. Your identity can be protected.
+              Withholding wages? Denying leave? Violating labour laws? Your employer is counting on your silence. Don&apos;t give them the satisfaction. Your identity can be protected — the law is on your side, even if your HR isn&apos;t.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {[
-                { icon: "🔒", title: "CONFIDENTIAL", desc: "Your identity is never shared without consent." },
-                { icon: "📜", title: "DOCUMENTED", desc: "Every report creates a timestamped record." },
-                { icon: "⚖️", title: "ACTION TAKEN", desc: "Forwarded to the appropriate Labour Commissioner." },
+                { icon: "🔒", title: "CONFIDENTIAL", desc: "Your identity is protected. Unlike your salary, this is actually private." },
+                { icon: "📜", title: "DOCUMENTED", desc: "Every report creates a timestamped record. Screenshots are great, but legal records are better." },
+                { icon: "⚖️", title: "ACTION TAKEN", desc: "Forwarded to the Labour Commissioner. Yes, the one with actual authority." },
               ].map((f) => (
                 <div
                   key={f.title}
@@ -690,14 +690,14 @@ function ReportSection() {
                 borderBottom: "2px solid var(--color-ink)",
               }}
             >
-              EVIDENCE CHECKLIST
+              YOUR EVIDENCE KIT
             </h3>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 24 }}>
               {[
-                "Record details: date, time, location, witnesses.",
-                "Secure copies of appointment letters & salary slips.",
-                "Screenshot all WhatsApp/email threats or commands.",
-                "Note down your EPF/UAN number immediately.",
+                "Write down everything: date, time, location, who saw it. Memory is unreliable, courts are not.",
+                "Photocopy your appointment letter and salary slips. Hide them somewhere your employer can't 'accidentally' delete.",
+                "Screenshot every threatening WhatsApp message, email, or 'casual conversation' that turned legal.",
+                "Note your EPF/UAN number NOW — before they 'lose' your records.",
               ].map((item) => (
                 <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 16, fontSize: 17, lineHeight: 1.5 }}>
                   <span
@@ -720,7 +720,7 @@ function ReportSection() {
             </ul>
             <div style={{ marginTop: 32, padding: 20, background: "var(--color-ink)", color: "var(--color-paper)", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", fontSize: 11, lineHeight: 1.6, margin: 0 }}>
-                This is not legal advice. For serious threats, approach the nearest legal services authority immediately.
+                This is not legal advice. For serious threats, approach the nearest legal services authority immediately. Or call a lawyer. Or both.
               </p>
             </div>
           </div>
@@ -742,7 +742,7 @@ function ResourcesSection() {
       <div className="container">
         <div className="animate-section" style={{ marginBottom: 72, display: "flex", alignItems: "flex-end", gap: 48, paddingBottom: 40, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
           <div style={{ flex: 1 }}>
-            <span className="eyebrow eyebrow-on-dark">Help & Support</span>
+            <span className="eyebrow eyebrow-on-dark">Numbers That Actually Help</span>
             <h2
               className="section-title"
               style={{ fontSize: "clamp(36px, 5.5vw, 68px)", color: "var(--color-paper)", margin: 0 }}
@@ -753,7 +753,7 @@ function ResourcesSection() {
           </div>
           <div style={{ flex: 1, textAlign: "right" }}>
             <p style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-paper)", fontSize: 16, fontWeight: 700, lineHeight: 1.4, opacity: 0.85 }}>
-              A SINGLE PHONE CALL CAN STOP EXPLOITATION IN ITS TRACKS.
+              A SINGLE PHONE CALL CAN STOP EXPLOITATION. YOUR BOSS&apos;S PR TEAM CAN&apos;T SPIN AWAY A LABOUR COMPLAINT.
             </p>
           </div>
         </div>
@@ -857,7 +857,7 @@ function JoinSection() {
 
           <div style={{ borderTop: "2px solid var(--color-ink)", borderBottom: "2px solid var(--color-ink)", padding: "28px 0", marginBottom: 40 }}>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: 640, margin: "0 auto" }}>
-              Knowledge spreads. Exploitation ends. Share this with your colleagues, your domestic help, your factory supervisor, your gig-worker neighbour.
+              Knowledge spreads. Exploitation ends. Send this to your colleague, your domestic help, your factory supervisor, your gig-worker neighbour. The more people who know, the harder it is to exploit. That&apos;s not a slogan — that&apos;s game theory.
             </p>
           </div>
 
@@ -872,7 +872,7 @@ function JoinSection() {
 
           <div style={{ marginTop: 48, paddingTop: 32, borderTop: "2px solid var(--color-ink)" }}>
             <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-3)", fontSize: 11, marginBottom: 20 }}>
-              SPREAD THE WORD
+              SPREAD THE WORD — YOUR BOSS CERTAINLY ISN&apos;T GOING TO
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
               {["WhatsApp", "Twitter / X", "Instagram", "Telegram"].map((platform) => (
@@ -916,7 +916,7 @@ function Footer() {
               </span>
             </div>
             <p style={{ fontFamily: "var(--font-sans)", color: "rgba(244,235,215,0.6)", maxWidth: 320, fontSize: 15, lineHeight: 1.6 }}>
-              A public resource for every worker in India. Know your rights. Protect your future.
+              A public resource for every worker in India. Funded by nothing. Sponsored by no one. Powered by the radical notion that workers deserve to know the law.
             </p>
           </div>
 
@@ -991,7 +991,7 @@ function Footer() {
           }}
         >
           <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,235,215,0.4)", fontSize: 11 }}>
-            © {new Date().getFullYear()} Dihadi Janta Party · A Public Resource Initiative
+            © {new Date().getFullYear()} Dihadi Janta Party · All Rants Reserved
           </p>
           <div style={{ display: "flex", gap: 24 }}>
             {["Privacy", "Terms", "Contact"].map((item) => (
