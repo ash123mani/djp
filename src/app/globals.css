@@ -442,27 +442,6 @@ a {
   }
 }
 
-/* Hero subtitle row */
-.hero-subtitle-row {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  max-width: 720px;
-  margin: 0 0 38px;
-}
-@media (max-width: 640px) {
-  .hero-subtitle-row {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
-  }
-  .hero-subtitle-row img {
-    width: 80px !important;
-    height: 80px !important;
-    align-self: center;
-  }
-}
-
 /* Hero stats grid */
 .hero-stats-grid {
   display: grid;
