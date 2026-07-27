@@ -851,8 +851,54 @@ function ReportSection() {
             </span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, maxWidth: 640 }}>
-            We&apos;re mapping how widespread exploitation really is — across industries, across cities, across companies that think nobody&apos;s keeping count. Your report adds to the data. Data becomes patterns. Patterns become undeniable. One form. All violations. Help us build the picture they can&apos;t ignore.
+            Most workers don&apos;t even know exploitation has a name. We&apos;re here to document how deep it runs — across industries, across cities, across companies that bet on your silence. Your report helps us see the full picture.
           </p>
+        </div>
+
+        {/* Anonymity Card */}
+        <div className="animate-section" style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              padding: "28px 48px",
+              border: "3px solid var(--color-green)",
+              boxShadow: "8px 8px 0 var(--color-green)",
+              background: "var(--color-green)",
+              color: "var(--color-paper)",
+              maxWidth: 640,
+              width: "100%",
+            }}
+          >
+            <span style={{
+              fontSize: 36,
+              width: 60,
+              height: 60,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--color-paper)",
+              color: "var(--color-green)",
+              border: "2px solid var(--color-paper)",
+              borderRadius: "50%",
+              flexShrink: 0,
+            }}>🔒</span>
+            <div>
+              <h3 style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(18px, 2vw, 24px)",
+                textTransform: "uppercase",
+                lineHeight: 1.1,
+                margin: "0 0 8px",
+              }}>
+                100% ANONYMOUS
+              </h3>
+              <p style={{ color: "rgba(244,235,215,0.9)", fontSize: 15, lineHeight: 1.6, margin: 0 }}>
+                We don&apos;t need your name, phone, or email. We don&apos;t need to know who you are. Just tell us what happened — the date, the place, the violation. The truth doesn&apos;t need an identity.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Single Report Button */}
@@ -945,7 +991,7 @@ function ReportSection() {
               display: "block",
               marginBottom: 20,
             }}>
-              WHAT WE&apos;RE DOING WITH YOUR DATA
+              WHY WE&apos;RE COLLECTING THIS DATA
             </span>
             <h3
               style={{
@@ -956,17 +1002,17 @@ function ReportSection() {
                 margin: "0 0 24px",
               }}
             >
-              WE&apos;RE BUILDING THE{" "}
+              THE{" "}
               <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
                 EXPLOITATION INDEX
               </span>
             </h3>
             <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: "0 auto 28px" }}>
-              Every report adds to a growing dataset of workplace exploitation across India. We&apos; mapping which companies exploit the most, which industries are the worst, and which bosses think the labour code doesn&apos;t apply to them. This isn&apos;t just data — it&apos;s ammunition.
+              Right now, nobody knows the true scale of workplace exploitation in India. We don&apos;t know which industries are the worst. We don&apos;t know how many workers are silently bearing the cost. Your report helps us see what the system is designed to keep invisible.
             </p>
             <div style={{ borderTop: "2px solid rgba(244,235,215,0.15)", paddingTop: 24 }}>
               <p style={{ color: "rgba(244,235,215,0.6)", fontSize: 15, lineHeight: 1.6, fontStyle: "italic" }}>
-                &ldquo;They exploit because they think nobody&apos;s counting. We&apos; counting. We&apos; building a case — company by company, violation by violation. When the data is ready, we&apos;re going after every single one of them.&rdquo;
+                &ldquo;You can&apos;t fix what you refuse to see. First, we document. Then, the picture speaks for itself.&rdquo;
               </p>
             </div>
           </div>
