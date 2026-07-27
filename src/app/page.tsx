@@ -360,18 +360,33 @@ function HeroSection() {
           </span>
         </h1>
 
-        <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            color: "var(--color-ink-2)",
-            maxWidth: 520,
-            margin: "0 0 38px",
-            fontSize: 18,
-            lineHeight: 1.6,
-          }}
-        >
-          You have rights. Your boss hopes you never find out. This site exists to ruin their plan. No legal jargon. No fine print. Just the law — in a language your HR department prays you never read.
-        </p>
+        <div style={{ display: "flex", alignItems: "center", gap: 32, maxWidth: 640, margin: "0 0 38px" }}>
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "var(--color-ink-2)",
+              flex: 1,
+              margin: 0,
+              fontSize: 18,
+              lineHeight: 1.6,
+            }}
+          >
+            You have rights. Your boss hopes you never find out. This site exists to ruin their plan. No legal jargon. No fine print. Just the law — in a language your HR department prays you never read.
+          </p>
+          <img
+            src="/logo.png"
+            alt="Dihadi Janta Party"
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "2px solid var(--color-ink)",
+              boxShadow: "4px 4px 0 var(--color-ink)",
+              flexShrink: 0,
+            }}
+          />
+        </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 56 }}>
           <a href="#rights" className="btn-primary">
