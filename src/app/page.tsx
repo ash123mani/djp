@@ -835,41 +835,6 @@ function KnowYourRightsSection() {
 }
 
 function ReportSection() {
-  const reports = [
-    {
-      icon: "⏰",
-      title: "REPORT OVERTIME WORK",
-      desc: "Working beyond 9 hours without double pay? That's not dedication — that's wage theft with a smile.",
-      color: "var(--color-blood)",
-      shadow: "var(--color-blood)",
-      href: "#",
-    },
-    {
-      icon: "💸",
-      title: "REPORT TIMELY PAY ISSUE",
-      desc: "Wages delayed past the 7th? Your landlord doesn't wait. Neither should you.",
-      color: "var(--color-saffron-deep)",
-      shadow: "var(--color-saffron-deep)",
-      href: "#",
-    },
-    {
-      icon: "✊",
-      title: "REPORT DIGNITY VIOLATIONS",
-      desc: "Verbal abuse? Unsafe conditions? Your dignity is non-negotiable — even if your employer thinks otherwise.",
-      color: "var(--color-green)",
-      shadow: "var(--color-green)",
-      href: "#",
-    },
-    {
-      icon: "⚖️",
-      title: "REPORT NO EQUAL PAY",
-      desc: "Same job, different paycheck? That's not 'market rate' — that's discrimination with extra decimals.",
-      color: "var(--color-ink)",
-      shadow: "var(--color-ink)",
-      href: "#",
-    },
-  ];
-
   return (
     <section id="report" className="section section-responsive" style={{ padding: "120px 0" }}>
       <div className="container">
@@ -885,82 +850,77 @@ function ReportSection() {
             </span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, maxWidth: 640 }}>
-            Every report is a record. Every record is evidence. Every piece of evidence is power. Your employer is counting on your silence — don&apos;t give them the satisfaction. Pick what applies. Fill the form. The law does the rest.
+            Every report is a record. Every record is evidence. Every piece of evidence is power. Your employer is counting on your silence — don&apos;t give them the satisfaction. One form. All violations. The law does the rest.
           </p>
         </div>
 
-        {/* Report Category Buttons */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: 20, marginBottom: 56 }}>
-          {reports.map((r, i) => (
-            <a
-              key={r.title}
-              href={r.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`animate-section stagger-${Math.min(i + 1, 4)}`}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 16,
-                padding: "32px 28px",
-                border: `3px solid ${r.color}`,
-                boxShadow: `8px 8px 0 ${r.shadow}`,
-                background: "var(--color-paper)",
-                textDecoration: "none",
-                color: "var(--color-ink)",
-                transition: "all 0.15s ease",
-                cursor: "pointer",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translate(-2px, -2px)";
-                e.currentTarget.style.boxShadow = `10px 10px 0 ${r.shadow}`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "none";
-                e.currentTarget.style.boxShadow = `8px 8px 0 ${r.shadow}`;
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                <span style={{
-                  fontSize: 32,
-                  width: 52,
-                  height: 52,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: r.color,
-                  color: "var(--color-paper)",
-                  border: "2px solid var(--color-ink)",
-                  flexShrink: 0,
-                }}>{r.icon}</span>
-                <h3 style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "clamp(16px, 2vw, 20px)",
-                  textTransform: "uppercase",
-                  lineHeight: 1.1,
-                  margin: 0,
-                }}>
-                  {r.title}
-                </h3>
-              </div>
-              <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.6, margin: 0 }}>
-                {r.desc}
-              </p>
-              <span style={{
-                fontFamily: "var(--font-condensed)",
-                letterSpacing: "0.16em",
+        {/* Single Report Button */}
+        <div className="animate-section" style={{ display: "flex", justifyContent: "center", marginBottom: 56 }}>
+          <a
+            href="https://tally.so/r/2EzPJA"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 20,
+              padding: "28px 48px",
+              border: "3px solid var(--color-blood)",
+              boxShadow: "8px 8px 0 var(--color-blood)",
+              background: "var(--color-blood)",
+              color: "var(--color-paper)",
+              textDecoration: "none",
+              transition: "all 0.15s ease",
+              cursor: "pointer",
+              maxWidth: 640,
+              width: "100%",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "translate(-2px, -2px)";
+              e.currentTarget.style.boxShadow = "10px 10px 0 var(--color-blood)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.boxShadow = "8px 8px 0 var(--color-blood)";
+            }}
+          >
+            <span style={{
+              fontSize: 36,
+              width: 60,
+              height: 60,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "var(--color-paper)",
+              color: "var(--color-blood)",
+              border: "2px solid var(--color-paper)",
+              borderRadius: "50%",
+              flexShrink: 0,
+            }}>✊</span>
+            <div>
+              <h3 style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(20px, 2.5vw, 28px)",
                 textTransform: "uppercase",
-                fontSize: 13,
-                fontWeight: 700,
-                color: r.color,
-                marginTop: "auto",
-                paddingTop: 12,
-                borderTop: "1px solid rgba(26,17,8,0.12)",
+                lineHeight: 1.1,
+                margin: "0 0 6px",
               }}>
-                FILE REPORT →
-              </span>
-            </a>
-          ))}
+                FILE YOUR REPORT NOW
+              </h3>
+              <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 14, lineHeight: 1.5, margin: 0 }}>
+                Overtime, unpaid wages, harassment, discrimination — one form, all violations.
+              </p>
+            </div>
+            <span style={{
+              fontFamily: "var(--font-condensed)",
+              fontSize: 24,
+              fontWeight: 700,
+              marginLeft: "auto",
+              flexShrink: 0,
+            }}>
+              →
+            </span>
+          </a>
         </div>
 
         {/* Trust signals */}
