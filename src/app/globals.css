@@ -566,18 +566,22 @@ a {
   .section-responsive-logo {
     padding: 64px 0;
   }
+  .section-responsive-logo .container {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 32px !important;
+  }
 }
 
 /* Logo banner logo size */
 .logo-banner-img {
-  width: 160px;
-  height: 160px;
+  width: min(320px, 40vw);
+  height: min(320px, 40vw);
 }
 @media (max-width: 768px) {
   .logo-banner-img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 32px !important;
+    width: 120px !important;
+    height: 120px !important;
   }
 }
 

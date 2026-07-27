@@ -517,68 +517,74 @@ function LogoBanner() {
       <div className="tricolor-ribbon" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
       <div className="tricolor-ribbon" style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
 
-      <div className="container animate-section" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1 }}>
-        <img
-          src="/logo.png"
-          alt="Dihadi Janta Party"
-          className="logo-banner-img"
-          style={{
-            borderRadius: "50%",
-            objectFit: "cover",
-            border: "4px solid var(--color-saffron)",
-            boxShadow: "0 0 60px rgba(224,101,30,0.3)",
-            marginBottom: 48,
-          }}
-        />
+      <div className="container animate-section" style={{ display: "flex", alignItems: "center", gap: 48, position: "relative", zIndex: 1 }}>
+        {/* Left: Text */}
+        <div style={{ flex: 1, textAlign: "left" }}>
+          <h2
+            style={{
+              fontFamily: "var(--font-display)",
+              color: "var(--color-paper)",
+              fontSize: "clamp(36px, 6vw, 72px)",
+              lineHeight: 0.95,
+              margin: "0 0 28px",
+            }}
+          >
+            WE DON&apos;T DO{" "}
+            <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+              DONATIONS.
+            </span>{" "}
+            WE DO{" "}
+            <span style={{ color: "var(--color-blood)" }}>
+              DEMANDS.
+            </span>
+          </h2>
 
-        <h2
-          style={{
-            fontFamily: "var(--font-display)",
-            color: "var(--color-paper)",
-            fontSize: "clamp(36px, 6vw, 72px)",
-            lineHeight: 0.95,
-            margin: "0 0 32px",
-            maxWidth: "20ch",
-          }}
-        >
-          WE DON&apos;T DO{" "}
-          <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-            DONATIONS.
-          </span>{" "}
-          WE DO{" "}
-          <span style={{ color: "var(--color-blood)" }}>
-            DEMANDS.
-          </span>
-        </h2>
+          <p
+            style={{
+              fontFamily: "var(--font-sans)",
+              color: "rgba(244,235,215,0.7)",
+              fontSize: 18,
+              lineHeight: 1.7,
+              maxWidth: 480,
+              margin: "0 0 32px",
+            }}
+          >
+            No corporate sponsors. No oligarch backing. No Prime Cares Fund. Just 50 crore workers who are tired of being invisible. This is not a charity. This is a demand.
+          </p>
 
-        <p
-          style={{
-            fontFamily: "var(--font-sans)",
-            color: "rgba(244,235,215,0.7)",
-            fontSize: 18,
-            lineHeight: 1.7,
-            maxWidth: 600,
-            margin: "0 auto 40px",
-          }}
-        >
-          No corporate sponsors. No oligarch backing. No Prime Cares Fund. Just 50 crore workers who are tired of being invisible. This is not a charity. This is a demand.
-        </p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 24,
+              fontFamily: "var(--font-mono)",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--color-saffron-2)",
+              fontSize: 12,
+            }}
+          >
+            <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
+            DIHADI JANTA PARTY — EST. 2026
+            <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
+          </div>
+        </div>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-            fontFamily: "var(--font-mono)",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "var(--color-saffron-2)",
-            fontSize: 12,
-          }}
-        >
-          <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
-          DIHADI JANTA PARTY — EST. 2026
-          <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
+        {/* Right: Logo */}
+        <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img
+            src="/logo.png"
+            alt="Dihadi Janta Party"
+            className="logo-banner-img"
+            style={{
+              height: "min(320px, 40vw)",
+              width: "min(320px, 40vw)",
+              borderRadius: "50%",
+              objectFit: "cover",
+              border: "4px solid var(--color-saffron)",
+              boxShadow: "0 0 60px rgba(224,101,30,0.3)",
+            }}
+          />
         </div>
       </div>
     </section>
