@@ -850,7 +850,7 @@ function ReportSection() {
             </span>
           </h2>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, maxWidth: 640 }}>
-            Every report is a record. Every record is evidence. Every piece of evidence is power. Your employer is counting on your silence — don&apos;t give them the satisfaction. One form. All violations. The law does the rest.
+            We&apos;re mapping how widespread exploitation really is — across industries, across cities, across companies that think nobody&apos;s keeping count. Your report adds to the data. Data becomes patterns. Patterns become undeniable. One form. All violations. Help us build the picture they can&apos;t ignore.
           </p>
         </div>
 
