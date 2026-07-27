@@ -110,6 +110,7 @@ const KNOW_YOUR_RIGHTS = [
 const RESOURCES = [
   {
     title: "Helpline Numbers",
+    accent: "var(--color-saffron-deep)",
     items: [
       { label: "Central Labour Helpline", value: "1800-111-669" },
       { label: "Women Helpline", value: "181" },
@@ -119,6 +120,7 @@ const RESOURCES = [
   },
   {
     title: "Portals & Apps",
+    accent: "var(--color-green)",
     items: [
       { label: "EPF Passbook", value: "umang.gov.in" },
       { label: "ESIC Portal", value: "esic.gov.in" },
@@ -128,6 +130,7 @@ const RESOURCES = [
   },
   {
     title: "Legal Aid",
+    accent: "var(--color-blood)",
     items: [
       { label: "National Legal Services", value: "nalsa.gov.in" },
       { label: "Free Legal Aid", value: "15100" },
@@ -200,6 +203,8 @@ function Ticker() {
     "YOUR BOSS IS NOT YOUR KING",
     "IGNORANCE IS THEIR BIGGEST WEAPON",
     "DEMAND YOUR DUES — THEY ALREADY SPENT THEM",
+    "THEY CALL IT 'FLEXIBILITY'. WE CALL IT WAGE THEFT.",
+    "YOUR OVERTIME PAID FOR YOUR BOSS'S VACATION HOME",
   ];
 
   return (
@@ -250,25 +255,25 @@ function HeroSection() {
       </div>
 
       <div className="container animate-up" style={{ position: "relative", zIndex: 1, paddingTop: 72, paddingBottom: 90 }}>
-        <span
-          style={{
-            fontFamily: "var(--font-mono)",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "var(--color-blood)",
-            border: "1px solid var(--color-blood)",
-            borderRadius: 100,
-            padding: "7px 14px",
-            fontSize: 11,
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            marginBottom: 22,
-          }}
-        >
-          <span style={{ background: "var(--color-blood)", borderRadius: "50%", width: 7, height: 7, display: "inline-block" }} />
-          KNOWLEDGE IS POWER — USE IT
-        </span>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--color-blood)",
+              border: "1px solid var(--color-blood)",
+              borderRadius: 100,
+              padding: "7px 14px",
+              fontSize: 11,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              marginBottom: 22,
+            }}
+          >
+            <span className="pulse-dot" style={{ background: "var(--color-blood)", borderRadius: "50%", width: 7, height: 7, display: "inline-block" }} />
+            KNOWLEDGE IS POWER — USE IT
+          </span>
 
         <h1
           style={{
@@ -300,7 +305,7 @@ function HeroSection() {
             lineHeight: 1.6,
           }}
         >
-          You have rights. Your boss hopes you don't know them. This website exists to ruin that plan. No legal jargon. No fine print. Just the law — written in a language humans understand.
+          You have rights. Your boss hopes you never find out. This site exists to ruin their plan. No legal jargon. No fine print. Just the law — in a language your HR department prays you never read.
         </p>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 56 }}>
@@ -338,6 +343,8 @@ function HeroSection() {
           ))}
         </div>
       </div>
+      {/* Tricolor ribbon below hero */}
+      <div className="tricolor-ribbon-thick" />
     </section>
   );
 }
@@ -378,7 +385,7 @@ function VisionSection() {
             style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
           >
             Our Movement&apos;s{" "}
-            <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic", fontWeight: 400 }}>
+            <span className="highlight-text-saffron">
               Vision.
             </span>
           </h2>
@@ -386,7 +393,7 @@ function VisionSection() {
 
         <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gap: 24 }}>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
-            Millions of workers in India sign contracts they cannot read, accept wages below the minimum, and suffer silent exploitation — because nobody told them the law exists. The system runs on your silence. We&apos;re here to turn up the volume.
+            Millions of workers in India sign contracts they cannot read, accept wages below the minimum, and suffer in silence — because nobody told them the law exists. The system runs on your ignorance. We&apos;re here to weaponize the truth.
           </p>
           <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
             This platform exists to shatter that silence. No legal jargon. No fine print. Just clear, actionable knowledge of what you are owed — written in a language your HR department hopes you never learn.
@@ -396,23 +403,31 @@ function VisionSection() {
         <div style={{ marginTop: 56, display: "flex", justifyContent: "center" }}>
           <div
             style={{
-              border: "2px solid var(--color-ink)",
-              boxShadow: "6px 6px 0 var(--color-ink)",
-              background: "var(--color-paper)",
-              padding: "24px 40px",
+              border: "3px solid var(--color-ink)",
+              boxShadow: "8px 8px 0 var(--color-ink)",
+              background: "var(--color-ink)",
+              color: "var(--color-paper)",
+              padding: "28px 48px",
               textAlign: "center",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
+            <div className="tricolor-ribbon" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
             <span
               style={{
-                fontFamily: "var(--font-condensed)",
-                letterSpacing: "0.14em",
+                fontFamily: "var(--font-display)",
+                letterSpacing: "0.06em",
                 textTransform: "uppercase",
-                fontSize: 18,
-                fontWeight: 700,
+                fontSize: "clamp(18px, 2.5vw, 24px)",
+                fontWeight: 400,
+                lineHeight: 1.2,
               }}
             >
-              KNOWLEDGE IS YOURS. THEY CAN&apos;T REVOKE IT.
+              KNOWLEDGE IS YOURS.{" "}
+              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+                THEY CAN&apos;T REVOKE IT.
+              </span>
             </span>
           </div>
         </div>
@@ -680,10 +695,10 @@ function KnowYourRightsSection() {
             }}
           >
             READ <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>THEM.</span>{" "}
-            <span style={{ color: "var(--color-saffron-2)" }}>USE THEM.</span>
+            <span className="highlight-text" style={{ color: "var(--color-blood)" }}>USE THEM.</span>
           </h2>
           <p style={{ color: "rgba(244,235,215,0.75)", fontSize: 18, lineHeight: 1.6, maxWidth: 560 }}>
-            Print this page. Paste it on the break room wall. Screenshot it. Send it to every worker you know. The more people who know, the harder it is to exploit.
+            Print this page. Paste it on the break room wall. Screenshot it. Send it to every worker you know. Knowledge is the one thing they can&apos;t take back once it spreads.
           </p>
         </div>
 
@@ -691,10 +706,8 @@ function KnowYourRightsSection() {
           {KNOW_YOUR_RIGHTS.map((item, i) => (
             <div
               key={item.number}
-              className={`animate-section stagger-${Math.min(i + 1, 6)}`}
+              className={`kyr-card animate-section stagger-${Math.min(i + 1, 6)}`}
               style={{
-                border: "2px solid rgba(244,235,215,0.2)",
-                background: "rgba(244,235,215,0.04)",
                 padding: "32px 28px",
                 display: "flex",
                 flexDirection: "column",
@@ -771,12 +784,12 @@ function ReportSection() {
               style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
             >
               REPORT{" "}
-              <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+              <span className="highlight-text-saffron">
                 EXPLOITATION
               </span>
             </h2>
             <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, marginBottom: 40 }}>
-              Withholding wages? Denying leave? Violating labour laws? Your employer is counting on your silence. Don&apos;t give them the satisfaction. Your identity can be protected — the law is on your side, even if your HR isn&apos;t.
+              Withholding wages? Denying leave? Violating labour laws? Your employer is counting on your silence. Don&apos;t give them the satisfaction. Your identity is protected — the law is on your side, even if your HR department isn&apos;t.
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -815,7 +828,8 @@ function ReportSection() {
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
-              background: "var(--color-paper)",
+              background: "var(--color-ink)",
+              color: "var(--color-paper)",
               padding: "36px 32px",
             }}
           >
@@ -827,7 +841,7 @@ function ReportSection() {
                 lineHeight: 1,
                 margin: "0 0 32px",
                 paddingBottom: 24,
-                borderBottom: "2px solid var(--color-ink)",
+                borderBottom: "2px solid rgba(244,235,215,0.2)",
               }}
             >
               YOUR EVIDENCE KIT
@@ -846,7 +860,7 @@ function ReportSection() {
                       background: "var(--color-saffron-deep)",
                       color: "var(--color-paper)",
                       padding: "4px 10px",
-                      border: "2px solid var(--color-ink)",
+                      border: "2px solid var(--color-saffron)",
                       flexShrink: 0,
                       marginTop: 2,
                       fontSize: 14,
@@ -854,11 +868,11 @@ function ReportSection() {
                   >
                     ✓
                   </span>
-                  <span style={{ fontWeight: 600 }}>{item}</span>
+                  <span style={{ fontWeight: 600, color: "rgba(244,235,215,0.85)" }}>{item}</span>
                 </li>
               ))}
             </ul>
-            <div style={{ marginTop: 32, padding: 20, background: "var(--color-ink)", color: "var(--color-paper)", textAlign: "center" }}>
+            <div style={{ marginTop: 32, padding: 20, background: "var(--color-blood)", color: "var(--color-paper)", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", fontSize: 11, lineHeight: 1.6, margin: 0 }}>
                 This is not legal advice. For serious threats, approach the nearest legal services authority immediately. Or call a lawyer. Or both.
               </p>
@@ -870,6 +884,9 @@ function ReportSection() {
           <a href="#" className="btn-primary" style={{ width: "100%", padding: "24px 32px", fontSize: 18, justifyContent: "center" }}>
             REPORT WAGE THEFT NOW →
           </a>
+          <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-ink-3)", fontSize: 11, textAlign: "center", marginTop: 16 }}>
+            YOUR IDENTITY IS PROTECTED. YOUR EMPLOYER&apos;S ISN&apos;T.
+          </p>
         </div>
       </div>
     </section>
@@ -893,7 +910,7 @@ function ResourcesSection() {
           </div>
           <div style={{ flex: 1, textAlign: "right" }}>
             <p style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-paper)", fontSize: 16, fontWeight: 700, lineHeight: 1.4, opacity: 0.85 }}>
-              A SINGLE PHONE CALL CAN STOP EXPLOITATION. YOUR BOSS&apos;S PR TEAM CAN&apos;T SPIN AWAY A LABOUR COMPLAINT.
+              ONE PHONE CALL CAN STOP EXPLOITATION. YOUR BOSS&apos;S PR TEAM CAN&apos;T SPIN AWAY A FORMAL LABOUR COMPLAINT.
             </p>
           </div>
         </div>
@@ -905,6 +922,7 @@ function ResourcesSection() {
               className={`animate-section stagger-${Math.min(i + 1, 3)}`}
               style={{
                 border: "2px solid rgba(244,235,215,0.2)",
+                borderTop: `3px solid ${category.accent}`,
                 background: "rgba(244,235,215,0.04)",
                 padding: "32px 28px",
                 display: "flex",
@@ -915,7 +933,7 @@ function ResourcesSection() {
               <h3
                 style={{
                   fontFamily: "var(--font-display)",
-                  color: "var(--color-paper)",
+                  color: category.accent,
                   textTransform: "uppercase",
                   fontSize: "clamp(22px, 2.5vw, 28px)",
                   lineHeight: 1,
@@ -991,8 +1009,8 @@ function JoinSection() {
             style={{ fontSize: "clamp(44px, 7vw, 88px)", margin: "0 0 32px" }}
           >
             UNITE.{" "}
-            <span style={{ color: "var(--color-blood)" }}>ORGANIZE.</span>{" "}
-            <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>FIGHT.</span>
+            <span className="highlight-text">ORGANIZE.</span>{" "}
+            <span className="highlight-text-saffron">FIGHT.</span>
           </h2>
 
           <div style={{ borderTop: "2px solid var(--color-ink)", borderBottom: "2px solid var(--color-ink)", padding: "28px 0", marginBottom: 40 }}>
@@ -1001,7 +1019,7 @@ function JoinSection() {
             </p>
           </div>
 
-          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16, marginBottom: 40 }}>
             <a href="#" className="btn-primary" style={{ padding: "18px 36px", fontSize: 16 }}>
               SHARE THE TRUTH
             </a>
@@ -1010,26 +1028,13 @@ function JoinSection() {
             </a>
           </div>
 
-          <div style={{ marginTop: 48, paddingTop: 32, borderTop: "2px solid var(--color-ink)" }}>
+          <div style={{ marginTop: 0, paddingTop: 32, borderTop: "2px solid var(--color-ink)" }}>
             <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-3)", fontSize: 11, marginBottom: 20 }}>
               SPREAD THE WORD — YOUR BOSS CERTAINLY ISN&apos;T GOING TO
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 12 }}>
               {["WhatsApp", "Twitter / X", "Instagram", "Telegram"].map((platform) => (
-                <span
-                  key={platform}
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    border: "1.5px solid rgba(26,17,8,0.2)",
-                    background: "rgba(26,17,8,0.04)",
-                    padding: "8px 16px",
-                    fontSize: 11,
-                    cursor: "pointer",
-                    transition: "all 0.18s",
-                  }}
-                >
+                <span key={platform} className="social-chip">
                   {platform}
                 </span>
               ))}
@@ -1043,8 +1048,9 @@ function JoinSection() {
 
 function Footer() {
   return (
-    <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)", paddingTop: 80 }}>
-      <div className="container">
+    <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)", paddingTop: 0 }}>
+      <div className="tricolor-ribbon-thick" />
+      <div className="container" style={{ paddingTop: 80 }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, paddingBottom: 60 }}>
           {/* Brand */}
           <div>
