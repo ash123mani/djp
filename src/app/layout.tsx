@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://dihadijantaparty.vercel.app"),
   title: "Dihadi Janta Party — Know Your Labour Rights",
   description:
     "Rights Guaranteed by the Constitution. Protected by Labour Laws. A public resource for every worker. Funded by nothing. Sponsored by no one.",
