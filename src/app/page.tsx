@@ -156,7 +156,7 @@ function Navbar() {
     >
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 76, padding: "14px var(--gutter)" }}>
         <a href="#" style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/logo.jpg" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-ink)" }} />
+          <img src="/logo.png" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-ink)" }} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontFamily: "var(--font-display)", fontSize: 20, lineHeight: 0.94 }}>
               <span style={{ color: "var(--color-blood)" }}>Dihadi</span>{" "}
@@ -426,7 +426,7 @@ function VisionSection() {
     >
       {/* Light logo background */}
       <img
-        src="/logo.jpg"
+        src="/logo.png"
         alt=""
         style={{
           position: "absolute",
@@ -518,7 +518,7 @@ function LogoBanner() {
 
       <div className="container animate-section" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1 }}>
         <img
-          src="/logo.jpg"
+          src="/logo.png"
           alt="Dihadi Janta Party"
           className="logo-banner-img"
           style={{
@@ -1039,7 +1039,7 @@ function JoinSection() {
     <section id="join" className="section section-responsive" style={{ padding: "120px 0", position: "relative", overflow: "hidden" }}>
       {/* Light logo background */}
       <img
-        src="/logo.jpg"
+        src="/logo.png"
         alt=""
         style={{
           position: "absolute",
@@ -1117,7 +1117,7 @@ function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 12 }}>
-              <img src="/logo.jpg" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(244,235,215,0.3)" }} />
+              <img src="/logo.png" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(244,235,215,0.3)" }} />
               <span style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 0.94 }}>
                 <span style={{ color: "var(--color-blood)" }}>Dihadi</span>{" "}
                 <span>Janta Party</span>
