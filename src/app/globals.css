@@ -318,14 +318,14 @@ a {
 /* Highlight text */
 .highlight-text {
   background: linear-gradient(180deg, transparent 50%, var(--color-blood) 50%);
-  color: var(--color-paper);
+  color: var(--color-ink);
   display: inline;
   padding: 0 4px;
 }
 
 .highlight-text-saffron {
   background: linear-gradient(180deg, transparent 50%, var(--color-saffron-deep) 50%);
-  color: var(--color-paper);
+  color: var(--color-ink);
   display: inline;
   padding: 0 4px;
 }

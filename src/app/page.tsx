@@ -1148,14 +1148,67 @@ function JoinSection() {
           </div>
 
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16, marginBottom: 40 }}>
-            <a href="#" className="btn-primary" style={{ padding: "18px 36px", fontSize: 16 }}>
+            <a
+              href="https://tally.so/r/2EzPJA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
+              style={{ padding: "18px 36px", fontSize: 16 }}
+            >
               SHARE THE TRUTH
             </a>
-            <a href="#" className="btn-secondary" style={{ padding: "18px 36px", fontSize: 16 }}>
-              VOLUNTEER NOW
+            <a href="https://tally.so/r/68G2eA" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ padding: "18px 36px", fontSize: 16 }}>
+              JOIN THE MOVEMENT
             </a>
           </div>
 
+          {/* Anonymity Card */}
+          <div style={{ borderTop: "2px solid var(--color-ink)", paddingTop: 32 }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 20,
+                padding: "24px 32px",
+                border: "3px solid var(--color-green)",
+                boxShadow: "8px 8px 0 var(--color-green)",
+                background: "var(--color-green)",
+                color: "var(--color-paper)",
+                maxWidth: 640,
+                margin: "0 auto",
+              }}
+            >
+              <span style={{
+                fontSize: 32,
+                width: 52,
+                height: 52,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "var(--color-paper)",
+                color: "var(--color-green)",
+                border: "2px solid var(--color-paper)",
+                borderRadius: "50%",
+                flexShrink: 0,
+              }}>🔒</span>
+              <div>
+                <h3 style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(16px, 2vw, 20px)",
+                  textTransform: "uppercase",
+                  lineHeight: 1.1,
+                  margin: "0 0 6px",
+                }}>
+                  100% ANONYMOUS
+                </h3>
+                <p style={{ color: "rgba(244,235,215,0.9)", fontSize: 14, lineHeight: 1.5, margin: 0 }}>
+                  We don&apos;t need your name, phone, or email. We don&apos;t need to know who you are. Just tell us what happened — the date, the place, the violation. The truth doesn&apos;t need an identity.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* TODO: Re-enable when social sharing is ready
           <div style={{ marginTop: 0, paddingTop: 32, borderTop: "2px solid var(--color-ink)" }}>
             <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-3)", fontSize: 11, marginBottom: 20 }}>
               SPREAD THE WORD — YOUR BOSS CERTAINLY ISN&apos;T GOING TO
@@ -1168,6 +1221,7 @@ function JoinSection() {
               ))}
             </div>
           </div>
+          */}
         </div>
       </div>
     </section>
@@ -1203,7 +1257,6 @@ function Footer() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
                   { label: "Constitutional Rights", href: "#rights" },
-                  { label: "Labour Codes", href: "#rights" },
                   { label: "Know Your Rights", href: "#know-your-rights" },
                   { label: "Helplines", href: "#resources" },
                 ].map((link) => (
@@ -1224,28 +1277,11 @@ function Footer() {
                 {[
                   { label: "Report Exploitation", href: "#report" },
                   { label: "Join the Movement", href: "#join" },
-                  { label: "Volunteer", href: "#" },
-                  { label: "Legal Aid", href: "#" },
                 ].map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className="footer-link">
                       <span style={{ color: "var(--color-saffron-deep)", fontSize: 12 }}>▸</span>
                       {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4 style={{ fontFamily: "var(--font-display)", fontSize: 16, textTransform: "uppercase", marginBottom: 28, paddingBottom: 16, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
-                About
-              </h4>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                {["Privacy Policy", "Terms of Use", "Contact", "Press"].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="footer-link">
-                      <span style={{ color: "var(--color-saffron-deep)", fontSize: 12 }}>▸</span>
-                      {link}
                     </a>
                   </li>
                 ))}
@@ -1265,24 +1301,6 @@ function Footer() {
           <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,235,215,0.4)", fontSize: 11 }}>
             © {new Date().getFullYear()} Dihadi Janta Party · All Rants Reserved
           </p>
-          <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy", "Terms", "Contact"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: "rgba(244,235,215,0.4)",
-                  fontSize: 10,
-                  transition: "color 0.18s",
-                }}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
