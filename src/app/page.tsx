@@ -924,89 +924,49 @@ function ReportSection() {
           </a>
         </div>
 
-        {/* Trust signals */}
-        <div className="report-grid" style={{ alignItems: "start" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {[
-              { icon: "🔒", title: "CONFIDENTIAL", desc: "Your identity is protected. Unlike your salary, this is actually private." },
-              { icon: "📜", title: "DOCUMENTED", desc: "Every report creates a timestamped record. Screenshots are great, but legal records are better." },
-              { icon: "⚖️", title: "ACTION TAKEN", desc: "Forwarded to the Labour Commissioner. Yes, the one with actual authority." },
-            ].map((f) => (
-              <div
-                key={f.title}
-                style={{
-                  border: "2px solid var(--color-ink)",
-                  boxShadow: "4px 4px 0 var(--color-ink)",
-                  background: "var(--color-paper)",
-                  padding: "20px 24px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 20,
-                }}
-              >
-                <span style={{ fontSize: 28, flexShrink: 0 }}>{f.icon}</span>
-                <div>
-                  <h4 style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
-                    {f.title}
-                  </h4>
-                  <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.5 }}>{f.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
+        {/* Mission Statement */}
+        <div className="animate-section" style={{ maxWidth: 800, margin: "0 auto" }}>
           <div
-            className="animate-section stagger-1"
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
               background: "var(--color-ink)",
               color: "var(--color-paper)",
-              padding: "36px 32px",
+              padding: "40px 36px",
+              textAlign: "center",
             }}
           >
+            <span style={{
+              fontFamily: "var(--font-mono)",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "var(--color-saffron-deep)",
+              fontSize: 12,
+              display: "block",
+              marginBottom: 20,
+            }}>
+              WHAT WE&apos;RE DOING WITH YOUR DATA
+            </span>
             <h3
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(22px, 2.5vw, 30px)",
+                fontSize: "clamp(24px, 3vw, 36px)",
                 textTransform: "uppercase",
-                lineHeight: 1,
+                lineHeight: 1.1,
                 margin: "0 0 24px",
-                paddingBottom: 20,
-                borderBottom: "2px solid rgba(244,235,215,0.2)",
               }}
             >
-              BEFORE YOU FILE
+              WE&apos;RE BUILDING THE{" "}
+              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+                EXPLOITATION INDEX
+              </span>
             </h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 20 }}>
-              {[
-                "Write down everything: date, time, location, who saw it. Memory is unreliable, courts are not.",
-                "Photocopy your appointment letter and salary slips. Hide them somewhere safe.",
-                "Screenshot every threatening WhatsApp message, email, or 'casual conversation' that turned legal.",
-                "Note your EPF/UAN number NOW — before they 'lose' your records.",
-              ].map((item) => (
-                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 16, fontSize: 15, lineHeight: 1.5 }}>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      background: "var(--color-saffron-deep)",
-                      color: "var(--color-paper)",
-                      padding: "4px 10px",
-                      border: "2px solid var(--color-saffron)",
-                      flexShrink: 0,
-                      marginTop: 2,
-                      fontSize: 14,
-                    }}
-                  >
-                    ✓
-                  </span>
-                  <span style={{ fontWeight: 600, color: "rgba(244,235,215,0.85)" }}>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <div style={{ marginTop: 28, padding: 16, background: "var(--color-blood)", color: "var(--color-paper)", textAlign: "center" }}>
-              <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", fontSize: 11, lineHeight: 1.6, margin: 0 }}>
-                Not legal advice. For serious threats, approach the nearest legal services authority immediately.
+            <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: "0 auto 28px" }}>
+              Every report adds to a growing dataset of workplace exploitation across India. We&apos; mapping which companies exploit the most, which industries are the worst, and which bosses think the labour code doesn&apos;t apply to them. This isn&apos;t just data — it&apos;s ammunition.
+            </p>
+            <div style={{ borderTop: "2px solid rgba(244,235,215,0.15)", paddingTop: 24 }}>
+              <p style={{ color: "rgba(244,235,215,0.6)", fontSize: 15, lineHeight: 1.6, fontStyle: "italic" }}>
+                &ldquo;They exploit because they think nobody&apos;s counting. We&apos; counting. We&apos; building a case — company by company, violation by violation. When the data is ready, we&apos;re going after every single one of them.&rdquo;
               </p>
             </div>
           </div>
