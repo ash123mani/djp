@@ -421,54 +421,166 @@ function VisionSection() {
   );
 }
 
+function LogoBanner() {
+  return (
+    <section
+      style={{
+        background: "var(--color-ink)",
+        borderBottom: "3px solid var(--color-saffron)",
+        borderTop: "3px solid var(--color-saffron)",
+        padding: "100px 0",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
+      {/* Tricolor ribbon */}
+      <div className="tricolor-ribbon" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
+      <div className="tricolor-ribbon" style={{ position: "absolute", bottom: 0, left: 0, right: 0 }} />
+
+      <div className="container animate-section" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", position: "relative", zIndex: 1 }}>
+        <img
+          src="/logo.jpg"
+          alt="Dihadi Janta Party"
+          style={{
+            width: 160,
+            height: 160,
+            borderRadius: "50%",
+            objectFit: "cover",
+            border: "4px solid var(--color-saffron)",
+            boxShadow: "0 0 60px rgba(224,101,30,0.3)",
+            marginBottom: 48,
+          }}
+        />
+
+        <h2
+          style={{
+            fontFamily: "var(--font-display)",
+            color: "var(--color-paper)",
+            fontSize: "clamp(36px, 6vw, 72px)",
+            lineHeight: 0.95,
+            margin: "0 0 32px",
+            maxWidth: "20ch",
+          }}
+        >
+          WE DON&apos;T DO{" "}
+          <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+            DONATIONS.
+          </span>{" "}
+          WE DO{" "}
+          <span style={{ color: "var(--color-blood)" }}>
+            DEMANDS.
+          </span>
+        </h2>
+
+        <p
+          style={{
+            fontFamily: "var(--font-sans)",
+            color: "rgba(244,235,215,0.7)",
+            fontSize: 18,
+            lineHeight: 1.7,
+            maxWidth: 600,
+            margin: "0 auto 40px",
+          }}
+        >
+          No corporate sponsors. No oligarch backing. No Prime Cares Fund. Just 50 crore workers who are tired of being invisible. This is not a charity. This is a demand.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 24,
+            fontFamily: "var(--font-mono)",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "var(--color-saffron-2)",
+            fontSize: 12,
+          }}
+        >
+          <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
+          DIHADI JANTA PARTY — EST. 2026
+          <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function RightsGrid() {
   return (
     <section id="rights" className="section">
       <div className="container">
         {/* Constitutional Rights */}
         <div className="animate-section" style={{ marginBottom: 96 }}>
-          <span className="eyebrow">Legal Framework — Yes, It Actually Exists</span>
-          <h2 className="section-title" style={{ fontSize: "clamp(32px, 4.5vw, 52px)", margin: "0 0 16px" }}>
-            Constitutional{" "}
-            <span style={{ color: "var(--color-blood)" }}>Rights</span>
-          </h2>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.55, maxWidth: 640, margin: "0 0 48px" }}>
-            These are NOT privileges your boss graciously bestows upon you. They are constitutional guarantees. Your employer&apos;s opinion is irrelevant.
-          </p>
+          <div
+            style={{
+              border: "3px solid var(--color-ink)",
+              boxShadow: "8px 8px 0 var(--color-ink)",
+              background: "var(--color-paper)",
+              padding: "40px 48px",
+              marginBottom: 48,
+            }}
+          >
+            <span className="eyebrow">Legal Framework — Yes, It Actually Exists</span>
+            <h2 className="section-title" style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: "0 0 16px" }}>
+              Constitutional{" "}
+              <span style={{ color: "var(--color-blood)" }}>Rights</span>
+            </h2>
+            <p style={{ color: "var(--color-ink-2)", fontSize: 19, lineHeight: 1.6, maxWidth: 700 }}>
+              These are NOT privileges your boss graciously bestows upon you. They are constitutional guarantees. Your employer&apos;s opinion is irrelevant. The Constitution says so.
+            </p>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
             {RIGHTS.map((right, i) => (
               <div
                 key={right.title}
-                className={`card animate-section stagger-${Math.min(i + 1, 6)} ${right.span ? "col-span-2" : ""}`}
+                className={`animate-section stagger-${Math.min(i + 1, 6)}`}
                 style={{
-                  padding: "28px 24px",
+                  border: right.span ? "3px solid var(--color-blood)" : "2px solid var(--color-ink)",
+                  boxShadow: right.span ? "8px 8px 0 var(--color-blood)" : "6px 6px 0 var(--color-ink)",
+                  background: right.span ? "var(--color-blood)" : "var(--color-paper)",
+                  color: right.span ? "var(--color-paper)" : "var(--color-ink)",
+                  padding: "32px 28px",
                   gridColumn: right.span ? "span 2" : undefined,
                   display: "flex",
                   flexDirection: "column",
                   gap: 16,
+                  transition: "all 0.15s ease",
                 }}
               >
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 32 }}>{right.icon}</span>
+                  <span style={{ fontSize: 40 }}>{right.icon}</span>
                   <span
                     style={{
                       fontFamily: "var(--font-mono)",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                       fontSize: 11,
-                      color: "var(--color-saffron-deep)",
-                      border: "1px solid var(--color-saffron-deep)",
-                      padding: "4px 10px",
+                      color: right.span ? "var(--color-paper)" : "var(--color-saffron-deep)",
+                      border: `1px solid ${right.span ? "var(--color-paper)" : "var(--color-saffron-deep)"}`,
+                      padding: "5px 12px",
+                      fontWeight: 600,
                     }}
                   >
                     {right.article}
                   </span>
                 </div>
-                <h3 style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.06em", textTransform: "uppercase", fontSize: 20, fontWeight: 700 }}>
+                <h3 style={{
+                  fontFamily: "var(--font-display)",
+                  letterSpacing: "0.02em",
+                  textTransform: "uppercase",
+                  fontSize: 22,
+                  lineHeight: 1.1,
+                }}>
                   {right.title}
                 </h3>
-                <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.55, flex: 1 }}>
+                <p style={{
+                  fontSize: 15,
+                  lineHeight: 1.6,
+                  flex: 1,
+                  color: right.span ? "rgba(244,235,215,0.85)" : "var(--color-ink-2)",
+                }}>
                   {right.desc}
                 </p>
               </div>
@@ -478,16 +590,27 @@ function RightsGrid() {
 
         {/* Labour Codes */}
         <div className="animate-section">
-          <span className="eyebrow">Statutory Protection — Laws That Actually Have Teeth</span>
-          <h2 className="section-title" style={{ fontSize: "clamp(32px, 4.5vw, 52px)", margin: "0 0 16px" }}>
-            The{" "}
-            <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-              Labour Codes
-            </span>
-          </h2>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.55, maxWidth: 640, margin: "0 0 48px" }}>
-            Four codes that govern every workplace in India. Your employer&apos;s lawyer has read them. Now it&apos;s your turn.
-          </p>
+          <div
+            style={{
+              border: "3px solid var(--color-ink)",
+              boxShadow: "8px 8px 0 var(--color-ink)",
+              background: "var(--color-ink)",
+              color: "var(--color-paper)",
+              padding: "40px 48px",
+              marginBottom: 48,
+            }}
+          >
+            <span className="eyebrow eyebrow-on-dark">Statutory Protection — Laws That Actually Have Teeth</span>
+            <h2 className="section-title" style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: "0 0 16px", color: "var(--color-paper)" }}>
+              The{" "}
+              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
+                Labour Codes
+              </span>
+            </h2>
+            <p style={{ color: "rgba(244,235,215,0.7)", fontSize: 19, lineHeight: 1.6, maxWidth: 700 }}>
+              Four codes that govern every workplace in India. Your employer&apos;s lawyer has read them. Now it&apos;s your turn. Ignorance of the law is not an excuse — it&apos;s their business model.
+            </p>
+          </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(480px, 1fr))", gap: 20 }}>
             {STATUTORY_RIGHTS.map((code, i) => (
@@ -495,22 +618,39 @@ function RightsGrid() {
                 key={code.title}
                 className={`animate-section stagger-${Math.min(i + 1, 4)}`}
                 style={{
-                  border: "2px solid var(--color-ink)",
-                  boxShadow: "6px 6px 0 var(--color-ink)",
+                  border: "3px solid var(--color-ink)",
+                  boxShadow: "8px 8px 0 var(--color-saffron-deep)",
                   background: "var(--color-paper)",
-                  padding: "28px 28px",
+                  padding: "32px 32px",
                 }}
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24, paddingBottom: 20, borderBottom: "1px solid rgba(26,17,8,0.15)" }}>
-                  <span style={{ fontSize: 28 }}>{code.icon}</span>
-                  <h3 style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.06em", textTransform: "uppercase", fontSize: 20, fontWeight: 700 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24, paddingBottom: 20, borderBottom: "2px solid var(--color-ink)" }}>
+                  <span style={{
+                    fontSize: 32,
+                    width: 52,
+                    height: 52,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background: "var(--color-saffron-deep)",
+                    color: "var(--color-paper)",
+                    border: "2px solid var(--color-ink)",
+                  }}>{code.icon}</span>
+                  <h3 style={{ fontFamily: "var(--font-display)", letterSpacing: "0.04em", textTransform: "uppercase", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>
                     {code.title}
                   </h3>
                 </div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                   {code.items.map((item) => (
-                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, lineHeight: 1.5 }}>
-                      <span style={{ color: "var(--color-saffron-deep)", fontFamily: "var(--font-condensed)", fontWeight: 700, flexShrink: 0, marginTop: 2 }}>→</span>
+                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, lineHeight: 1.55 }}>
+                      <span style={{
+                        color: "var(--color-saffron-deep)",
+                        fontFamily: "var(--font-display)",
+                        fontWeight: 700,
+                        flexShrink: 0,
+                        marginTop: 2,
+                        fontSize: 16,
+                      }}>→</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -1024,6 +1164,7 @@ export default function Home() {
       <Ticker />
       <HeroSection />
       <VisionSection />
+      <LogoBanner />
       <RightsGrid />
       <KnowYourRightsSection />
       <ReportSection />

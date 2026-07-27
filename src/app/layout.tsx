@@ -4,7 +4,30 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Dihadi Janta Party — Know Your Labour Rights",
   description:
-    "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
+    "Rights Guaranteed by the Constitution. Protected by Labour Laws. A public resource for every worker. Funded by nothing. Sponsored by no one.",
+  icons: {
+    icon: "/logo.jpg",
+    apple: "/logo.jpg",
+  },
+  openGraph: {
+    title: "Dihadi Janta Party — Know Your Labour Rights",
+    description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
+    images: [
+      {
+        url: "/logo.jpg",
+        width: 800,
+        height: 800,
+        alt: "Dihadi Janta Party",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dihadi Janta Party — Know Your Labour Rights",
+    description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
+    images: ["/logo.jpg"],
+  },
 };
 
 export default function RootLayout({
