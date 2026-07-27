@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Rights", href: "#rights" },
@@ -140,6 +142,8 @@ const RESOURCES = [
 ];
 
 function Navbar() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   return (
     <nav
       className="sticky top-0 z-50"
@@ -165,7 +169,7 @@ function Navbar() {
         </a>
 
         <div style={{ display: "flex", alignItems: "center", gap: 36 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
+          <div className="nav-links-group" style={{ display: "flex", alignItems: "center", gap: 32 }}>
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
@@ -186,11 +190,72 @@ function Navbar() {
               </a>
             ))}
           </div>
-          <a href="#join" className="btn-primary" style={{ padding: "12px 20px", fontSize: 13 }}>
+          <a href="#join" className="btn-primary nav-cta" style={{ padding: "12px 20px", fontSize: 13 }}>
+            UNITE. ORGANIZE. FIGHT.
+          </a>
+          {/* Hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="nav-hamburger"
+            aria-label="Toggle menu"
+            style={{
+              display: "none",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 8,
+              flexDirection: "column",
+              gap: 5,
+            }}
+          >
+            <span style={{ display: "block", width: 24, height: 2, background: "var(--color-ink)", transition: "all 0.2s", transform: mobileOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "var(--color-ink)", transition: "all 0.2s", opacity: mobileOpen ? 0 : 1 }} />
+            <span style={{ display: "block", width: 24, height: 2, background: "var(--color-ink)", transition: "all 0.2s", transform: mobileOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div
+          className="mobile-menu"
+          style={{
+            display: "none",
+            borderTop: "2px solid var(--color-ink)",
+            padding: "16px var(--gutter)",
+            background: "rgba(244,235,215,0.98)",
+          }}
+        >
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                fontFamily: "var(--font-condensed)",
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "var(--color-ink)",
+                fontSize: 15,
+                fontWeight: 600,
+                display: "block",
+                padding: "12px 0",
+                borderBottom: "1px solid rgba(26,17,8,0.1)",
+              }}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a
+            href="#join"
+            onClick={() => setMobileOpen(false)}
+            className="btn-primary"
+            style={{ marginTop: 16, width: "100%", justifyContent: "center" }}
+          >
             UNITE. ORGANIZE. FIGHT.
           </a>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
@@ -254,7 +319,7 @@ function HeroSection() {
         RIGHTS
       </div>
 
-      <div className="container animate-up" style={{ position: "relative", zIndex: 1, paddingTop: 72, paddingBottom: 90 }}>
+      <div className="container animate-up hero-padding" style={{ position: "relative", zIndex: 1 }}>
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -319,10 +384,9 @@ function HeroSection() {
 
         {/* Stats strip */}
         <div
+          className="hero-stats-grid"
           style={{
             borderTop: "1px solid rgba(26,17,8,0.2)",
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
             paddingTop: 22,
           }}
         >
@@ -355,10 +419,10 @@ function VisionSection() {
       style={{
         background: "linear-gradient(180deg, var(--color-paper) 0, var(--color-paper-2) 100%)",
         borderBottom: "2px solid var(--color-ink)",
-        padding: "110px 0",
         position: "relative",
         overflow: "hidden",
       }}
+      className="section-responsive-tall"
     >
       {/* Light logo background */}
       <img
@@ -402,12 +466,12 @@ function VisionSection() {
 
         <div style={{ marginTop: 56, display: "flex", justifyContent: "center" }}>
           <div
+            className="vision-callout"
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
               background: "var(--color-ink)",
               color: "var(--color-paper)",
-              padding: "28px 48px",
               textAlign: "center",
               position: "relative",
               overflow: "hidden",
@@ -443,10 +507,10 @@ function LogoBanner() {
         background: "var(--color-ink)",
         borderBottom: "3px solid var(--color-saffron)",
         borderTop: "3px solid var(--color-saffron)",
-        padding: "100px 0",
         position: "relative",
         overflow: "hidden",
       }}
+      className="section-responsive-logo"
     >
       {/* Tricolor ribbon */}
       <div className="tricolor-ribbon" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
@@ -456,9 +520,8 @@ function LogoBanner() {
         <img
           src="/logo.jpg"
           alt="Dihadi Janta Party"
+          className="logo-banner-img"
           style={{
-            width: 160,
-            height: 160,
             borderRadius: "50%",
             objectFit: "cover",
             border: "4px solid var(--color-saffron)",
@@ -528,11 +591,11 @@ function RightsGrid() {
         {/* Constitutional Rights */}
         <div className="animate-section" style={{ marginBottom: 96 }}>
           <div
+            className="card-header-responsive"
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
               background: "var(--color-paper)",
-              padding: "40px 48px",
               marginBottom: 48,
             }}
           >
@@ -546,11 +609,11 @@ function RightsGrid() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
             {RIGHTS.map((right, i) => (
               <div
                 key={right.title}
-                className={`animate-section stagger-${Math.min(i + 1, 6)}`}
+                className={`animate-section stagger-${Math.min(i + 1, 6)} ${right.span ? "right-card-span" : ""}`}
                 style={{
                   border: right.span ? "3px solid var(--color-blood)" : "2px solid var(--color-ink)",
                   boxShadow: right.span ? "8px 8px 0 var(--color-blood)" : "6px 6px 0 var(--color-ink)",
@@ -606,12 +669,12 @@ function RightsGrid() {
         {/* Labour Codes */}
         <div className="animate-section">
           <div
+            className="card-header-responsive"
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
               background: "var(--color-ink)",
               color: "var(--color-paper)",
-              padding: "40px 48px",
               marginBottom: 48,
             }}
           >
@@ -627,7 +690,7 @@ function RightsGrid() {
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(480px, 1fr))", gap: 20 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(480px, 100%), 1fr))", gap: 20 }}>
             {STATUTORY_RIGHTS.map((code, i) => (
               <div
                 key={code.title}
@@ -681,7 +744,7 @@ function RightsGrid() {
 
 function KnowYourRightsSection() {
   return (
-    <section id="know-your-rights" className="section section-dark" style={{ padding: "120px 0" }}>
+    <section id="know-your-rights" className="section section-dark section-responsive" style={{ padding: "120px 0" }}>
       <div className="container">
         <div className="animate-section" style={{ marginBottom: 72 }}>
           <span className="eyebrow eyebrow-on-dark">Things Your Employer Hopes You Never Read</span>
@@ -702,7 +765,7 @@ function KnowYourRightsSection() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(480px, 1fr))", gap: 20 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(480px, 100%), 1fr))", gap: 20 }}>
           {KNOW_YOUR_RIGHTS.map((item, i) => (
             <div
               key={item.number}
@@ -773,9 +836,9 @@ function KnowYourRightsSection() {
 
 function ReportSection() {
   return (
-    <section id="report" className="section" style={{ padding: "120px 0" }}>
+    <section id="report" className="section section-responsive" style={{ padding: "120px 0" }}>
       <div className="container">
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "start" }}>
+        <div className="report-grid">
           {/* Left: Info */}
           <div className="animate-section">
             <span className="eyebrow">Stop Suffering in Silence</span>
@@ -895,9 +958,9 @@ function ReportSection() {
 
 function ResourcesSection() {
   return (
-    <section id="resources" className="section section-dark" style={{ padding: "120px 0" }}>
+    <section id="resources" className="section section-dark section-responsive" style={{ padding: "120px 0" }}>
       <div className="container">
-        <div className="animate-section" style={{ marginBottom: 72, display: "flex", alignItems: "flex-end", gap: 48, paddingBottom: 40, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
+        <div className="animate-section resources-header" style={{ marginBottom: 72, paddingBottom: 40, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
           <div style={{ flex: 1 }}>
             <span className="eyebrow eyebrow-on-dark">Numbers That Actually Help</span>
             <h2
@@ -915,7 +978,7 @@ function ResourcesSection() {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(360px, 100%), 1fr))", gap: 24 }}>
           {RESOURCES.map((category, i) => (
             <div
               key={category.title}
@@ -973,7 +1036,7 @@ function ResourcesSection() {
 
 function JoinSection() {
   return (
-    <section id="join" className="section" style={{ padding: "120px 0", position: "relative", overflow: "hidden" }}>
+    <section id="join" className="section section-responsive" style={{ padding: "120px 0", position: "relative", overflow: "hidden" }}>
       {/* Light logo background */}
       <img
         src="/logo.jpg"
@@ -993,12 +1056,11 @@ function JoinSection() {
       />
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         <div
-          className="animate-section"
+          className="animate-section join-card"
           style={{
             border: "3px solid var(--color-ink)",
             boxShadow: "10px 10px 0 var(--color-ink)",
             background: "var(--color-paper)",
-            padding: "72px 56px",
             textAlign: "center",
             maxWidth: 960,
             margin: "0 auto",
@@ -1051,7 +1113,7 @@ function Footer() {
     <footer style={{ background: "var(--color-ink)", color: "var(--color-paper)", paddingTop: 0 }}>
       <div className="tricolor-ribbon-thick" />
       <div className="container" style={{ paddingTop: 80 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, paddingBottom: 60 }}>
+        <div className="footer-grid" style={{ paddingBottom: 60 }}>
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 12 }}>
@@ -1067,7 +1129,7 @@ function Footer() {
           </div>
 
           {/* Link columns */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 36 }}>
+          <div className="footer-links-grid">
             <div>
               <h4 style={{ fontFamily: "var(--font-display)", fontSize: 16, textTransform: "uppercase", marginBottom: 28, paddingBottom: 16, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
                 Know Your Rights
@@ -1128,12 +1190,10 @@ function Footer() {
 
         {/* Footer bottom */}
         <div
+          className="footer-bottom"
           style={{
             borderTop: "1px solid rgba(244,235,215,0.12)",
             padding: "22px 0",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
           }}
         >
           <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,235,215,0.4)", fontSize: 11 }}>
