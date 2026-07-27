@@ -835,57 +835,165 @@ function KnowYourRightsSection() {
 }
 
 function ReportSection() {
+  const reports = [
+    {
+      icon: "⏰",
+      title: "REPORT OVERTIME WORK",
+      desc: "Working beyond 9 hours without double pay? That's not dedication — that's wage theft with a smile.",
+      color: "var(--color-blood)",
+      shadow: "var(--color-blood)",
+      href: "#",
+    },
+    {
+      icon: "💸",
+      title: "REPORT TIMELY PAY ISSUE",
+      desc: "Wages delayed past the 7th? Your landlord doesn't wait. Neither should you.",
+      color: "var(--color-saffron-deep)",
+      shadow: "var(--color-saffron-deep)",
+      href: "#",
+    },
+    {
+      icon: "✊",
+      title: "REPORT DIGNITY VIOLATIONS",
+      desc: "Verbal abuse? Unsafe conditions? Your dignity is non-negotiable — even if your employer thinks otherwise.",
+      color: "var(--color-green)",
+      shadow: "var(--color-green)",
+      href: "#",
+    },
+    {
+      icon: "⚖️",
+      title: "REPORT NO EQUAL PAY",
+      desc: "Same job, different paycheck? That's not 'market rate' — that's discrimination with extra decimals.",
+      color: "var(--color-ink)",
+      shadow: "var(--color-ink)",
+      href: "#",
+    },
+  ];
+
   return (
     <section id="report" className="section section-responsive" style={{ padding: "120px 0" }}>
       <div className="container">
-        <div className="report-grid">
-          {/* Left: Info */}
-          <div className="animate-section">
-            <span className="eyebrow">Stop Suffering in Silence</span>
-            <h2
-              className="section-title"
-              style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
-            >
-              REPORT{" "}
-              <span className="highlight-text-saffron">
-                EXPLOITATION
-              </span>
-            </h2>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, marginBottom: 40 }}>
-              Withholding wages? Denying leave? Violating labour laws? Your employer is counting on your silence. Don&apos;t give them the satisfaction. Your identity is protected — the law is on your side, even if your HR department isn&apos;t.
-            </p>
+        <div className="animate-section" style={{ marginBottom: 64 }}>
+          <span className="eyebrow">Your Silence Is Their Business Model</span>
+          <h2
+            className="section-title"
+            style={{ fontSize: "clamp(40px, 6vw, 80px)", margin: "0 0 24px" }}
+          >
+            REPORT{" "}
+            <span className="highlight-text-saffron">
+              EXPLOITATION
+            </span>
+          </h2>
+          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, maxWidth: 640 }}>
+            Every report is a record. Every record is evidence. Every piece of evidence is power. Your employer is counting on your silence — don&apos;t give them the satisfaction. Pick what applies. Fill the form. The law does the rest.
+          </p>
+        </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              {[
-                { icon: "🔒", title: "CONFIDENTIAL", desc: "Your identity is protected. Unlike your salary, this is actually private." },
-                { icon: "📜", title: "DOCUMENTED", desc: "Every report creates a timestamped record. Screenshots are great, but legal records are better." },
-                { icon: "⚖️", title: "ACTION TAKEN", desc: "Forwarded to the Labour Commissioner. Yes, the one with actual authority." },
-              ].map((f) => (
-                <div
-                  key={f.title}
-                  style={{
-                    border: "2px solid var(--color-ink)",
-                    boxShadow: "4px 4px 0 var(--color-ink)",
-                    background: "var(--color-paper)",
-                    padding: "20px 24px",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 20,
-                  }}
-                >
-                  <span style={{ fontSize: 28, flexShrink: 0 }}>{f.icon}</span>
-                  <div>
-                    <h4 style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
-                      {f.title}
-                    </h4>
-                    <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.5 }}>{f.desc}</p>
-                  </div>
+        {/* Report Category Buttons */}
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))", gap: 20, marginBottom: 56 }}>
+          {reports.map((r, i) => (
+            <a
+              key={r.title}
+              href={r.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`animate-section stagger-${Math.min(i + 1, 4)}`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 16,
+                padding: "32px 28px",
+                border: `3px solid ${r.color}`,
+                boxShadow: `8px 8px 0 ${r.shadow}`,
+                background: "var(--color-paper)",
+                textDecoration: "none",
+                color: "var(--color-ink)",
+                transition: "all 0.15s ease",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "translate(-2px, -2px)";
+                e.currentTarget.style.boxShadow = `10px 10px 0 ${r.shadow}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "none";
+                e.currentTarget.style.boxShadow = `8px 8px 0 ${r.shadow}`;
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                <span style={{
+                  fontSize: 32,
+                  width: 52,
+                  height: 52,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  background: r.color,
+                  color: "var(--color-paper)",
+                  border: "2px solid var(--color-ink)",
+                  flexShrink: 0,
+                }}>{r.icon}</span>
+                <h3 style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "clamp(16px, 2vw, 20px)",
+                  textTransform: "uppercase",
+                  lineHeight: 1.1,
+                  margin: 0,
+                }}>
+                  {r.title}
+                </h3>
+              </div>
+              <p style={{ color: "var(--color-ink-2)", fontSize: 15, lineHeight: 1.6, margin: 0 }}>
+                {r.desc}
+              </p>
+              <span style={{
+                fontFamily: "var(--font-condensed)",
+                letterSpacing: "0.16em",
+                textTransform: "uppercase",
+                fontSize: 13,
+                fontWeight: 700,
+                color: r.color,
+                marginTop: "auto",
+                paddingTop: 12,
+                borderTop: "1px solid rgba(26,17,8,0.12)",
+              }}>
+                FILE REPORT →
+              </span>
+            </a>
+          ))}
+        </div>
+
+        {/* Trust signals */}
+        <div className="report-grid" style={{ alignItems: "start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {[
+              { icon: "🔒", title: "CONFIDENTIAL", desc: "Your identity is protected. Unlike your salary, this is actually private." },
+              { icon: "📜", title: "DOCUMENTED", desc: "Every report creates a timestamped record. Screenshots are great, but legal records are better." },
+              { icon: "⚖️", title: "ACTION TAKEN", desc: "Forwarded to the Labour Commissioner. Yes, the one with actual authority." },
+            ].map((f) => (
+              <div
+                key={f.title}
+                style={{
+                  border: "2px solid var(--color-ink)",
+                  boxShadow: "4px 4px 0 var(--color-ink)",
+                  background: "var(--color-paper)",
+                  padding: "20px 24px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 20,
+                }}
+              >
+                <span style={{ fontSize: 28, flexShrink: 0 }}>{f.icon}</span>
+                <div>
+                  <h4 style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", fontSize: 16, fontWeight: 700, marginBottom: 4 }}>
+                    {f.title}
+                  </h4>
+                  <p style={{ color: "var(--color-ink-2)", fontSize: 14, lineHeight: 1.5 }}>{f.desc}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
-          {/* Right: Evidence Checklist */}
           <div
             className="animate-section stagger-1"
             style={{
@@ -899,24 +1007,24 @@ function ReportSection() {
             <h3
               style={{
                 fontFamily: "var(--font-display)",
-                fontSize: "clamp(24px, 3vw, 34px)",
+                fontSize: "clamp(22px, 2.5vw, 30px)",
                 textTransform: "uppercase",
                 lineHeight: 1,
-                margin: "0 0 32px",
-                paddingBottom: 24,
+                margin: "0 0 24px",
+                paddingBottom: 20,
                 borderBottom: "2px solid rgba(244,235,215,0.2)",
               }}
             >
-              YOUR EVIDENCE KIT
+              BEFORE YOU FILE
             </h3>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 24 }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 20 }}>
               {[
                 "Write down everything: date, time, location, who saw it. Memory is unreliable, courts are not.",
-                "Photocopy your appointment letter and salary slips. Hide them somewhere your employer can't 'accidentally' delete.",
+                "Photocopy your appointment letter and salary slips. Hide them somewhere safe.",
                 "Screenshot every threatening WhatsApp message, email, or 'casual conversation' that turned legal.",
                 "Note your EPF/UAN number NOW — before they 'lose' your records.",
               ].map((item) => (
-                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 16, fontSize: 17, lineHeight: 1.5 }}>
+                <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 16, fontSize: 15, lineHeight: 1.5 }}>
                   <span
                     style={{
                       fontFamily: "var(--font-display)",
@@ -935,21 +1043,12 @@ function ReportSection() {
                 </li>
               ))}
             </ul>
-            <div style={{ marginTop: 32, padding: 20, background: "var(--color-blood)", color: "var(--color-paper)", textAlign: "center" }}>
+            <div style={{ marginTop: 28, padding: 16, background: "var(--color-blood)", color: "var(--color-paper)", textAlign: "center" }}>
               <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", fontSize: 11, lineHeight: 1.6, margin: 0 }}>
-                This is not legal advice. For serious threats, approach the nearest legal services authority immediately. Or call a lawyer. Or both.
+                Not legal advice. For serious threats, approach the nearest legal services authority immediately.
               </p>
             </div>
           </div>
-        </div>
-
-        <div style={{ marginTop: 56 }}>
-          <a href="#" className="btn-primary" style={{ width: "100%", padding: "24px 32px", fontSize: 18, justifyContent: "center" }}>
-            REPORT WAGE THEFT NOW →
-          </a>
-          <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--color-ink-3)", fontSize: 11, textAlign: "center", marginTop: 16 }}>
-            YOUR IDENTITY IS PROTECTED. YOUR EMPLOYER&apos;S ISN&apos;T.
-          </p>
         </div>
       </div>
     </section>
