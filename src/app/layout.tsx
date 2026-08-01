@@ -1,34 +1,85 @@
 import type { Metadata } from "next";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dihadijantaparty.vercel.app"),
-  title: "Majboor Janta Party — Know Your Labour Rights",
-  description:
-    "Rights Guaranteed by the Constitution. Protected by Labour Laws. A public resource for every worker. Funded by nothing. Sponsored by no one.",
-  icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+  metadataBase: new URL(SITE.url),
+  title: {
+    default: SITE.title,
+    template: `%s | ${SITE.name}`,
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
+  category: "Workers' Rights & Labour Law",
+  keywords: [...SITE.keywords],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
-    title: "Majboor Janta Party — Know Your Labour Rights",
-    description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
+    type: "website",
+    url: "/",
+    siteName: SITE.name,
+    title: SITE.title,
+    description: SITE.ogDescription,
+    locale: "en_IN",
     images: [
       {
         url: "/logo.png",
         width: 800,
         height: 800,
-        alt: "Majboor Janta Party",
+        alt: SITE.name,
       },
     ],
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Majboor Janta Party — Know Your Labour Rights",
-    description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
+    title: SITE.title,
+    description: SITE.ogDescription,
     images: ["/logo.png"],
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: `${SITE.url}/logo.png`,
+      description: SITE.description,
+    },
+    {
+      "@type": "WebSite",
+      name: SITE.name,
+      url: SITE.url,
+      description: SITE.description,
+      inLanguage: "en-IN",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -46,6 +97,10 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </body>
     </html>
   );

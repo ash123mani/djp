@@ -979,6 +979,19 @@ function Footer() {
   );
 }
 
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: RIGHTS.map((r) => ({
+    "@type": "Question",
+    name: `${r.title} — is it legal in India?`,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: `${r.body} ${r.law.join(" ")}`,
+    },
+  })),
+};
+
 export default function Home() {
   return (
     <main>
@@ -989,6 +1002,10 @@ export default function Home() {
       <RightsGrid />
       <JoinSection />
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }}
+      />
     </main>
   );
 }
