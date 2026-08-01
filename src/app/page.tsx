@@ -1,143 +1,171 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Rights", href: "#rights" },
-  { label: "Know Your Rights", href: "#know-your-rights" },
-  { label: "Report", href: "#report" },
-  { label: "Resources", href: "#resources" },
+  { label: "Join", href: "#join" },
 ];
 
 const RIGHTS = [
   {
-    icon: "🛡️",
-    title: "Right to Live with Dignity",
-    article: "Article 21",
-    desc: "Your boss thinks you're a machine. The Constitution disagrees. You have the right to be treated like a human being — not a printer that runs on chai and guilt.",
-    span: false,
+    icon: "⏰",
+    title: "Unpaid Overtime",
+    category: "hours",
+    article: "Factories Act, 1948 (Secs. 51, 54 & 59)",
+    quote: "\u201CStay another three hours. We're all a family here.\u201D",
+    body: "If you're working 12-hour days without overtime pay, that's not commitment. That's unpaid labour.",
+    law: [
+      "Maximum 48 hours per week",
+      "Maximum 9 hours per day (subject to legal exceptions)",
+      "Every hour beyond the legal limit must generally be paid at 2\u00D7 your ordinary wage.",
+    ],
   },
   {
-    icon: "🤝",
-    title: "Right to Form Associations",
-    article: "Article 19(1)(c)",
-    desc: "You can form a union. You can collectively bargain. Your employer cannot fire you for organizing — though they'll try creative ways like 'restructuring' or 'culture fit'.",
-    span: false,
-  },
-  {
-    icon: "🚫",
-    title: "Right Against Forced Labour",
-    article: "Article 23",
-    desc: "If you're working 12 hours for 8 hours of pay, congratulations — you've been volunteered for forced labour. The Constitution has a word for that: unconstitutional.",
-    span: true,
-  },
-  {
-    icon: "⚖️",
-    title: "Right to Equality",
-    article: "Articles 14 & 15",
-    desc: "Religion, race, caste, sex, place of birth — none of these determine your worth. Your employer's opinion of your worth also doesn't determine your worth.",
-    span: false,
+    icon: "🗓️",
+    title: "Weekly Holiday & Paid Leave",
+    category: "hours",
+    article: "Factories Act, 1948 (Secs. 52 & 79)",
+    quote: "Working every single day doesn't make you hardworking. It makes your employer non-compliant.",
+    body: "You deserve rest. The law agrees.",
+    law: [
+      "One weekly holiday after the prescribed work period.",
+      "Earn 1 day of paid leave for every 20 days worked (subject to eligibility).",
+    ],
   },
   {
     icon: "💰",
-    title: "Equal Pay for Equal Work",
-    article: "Article 39(d)",
-    desc: "If a man and a woman do the same job, they get the same pay. This is not a suggestion. This is the law. Your HR department's spreadsheet doesn't override the Constitution.",
-    span: false,
+    title: "Salary Delayed Every Month",
+    category: "wages",
+    article: "Payment of Wages Act, 1936",
+    quote: "\u201CFinance hasn't approved it yet.\u201D",
+    body: "Your salary is not a favour. That excuse doesn't pay your rent, EMI, or groceries.",
+    law: [
+      "Wages must be paid within the legally prescribed time limits. Deliberate delays can attract penalties.",
+    ],
   },
-];
-
-const STATUTORY_RIGHTS = [
   {
-    icon: "🏛️",
-    title: "Code on Wages, 2019",
-    items: [
-      "Minimum wage fixation — because your landlord doesn't accept 'exposure' as rent",
-      "Timely payment — wages by the 7th, not 'when we feel like it'",
-      "Equal remuneration — gender doesn't determine your bank account's worth",
+    icon: "⚖️",
+    title: "Equal Pay for Equal Work",
+    category: "wages",
+    article: "Constitution Article 39(d) + Code on Wages, 2019",
+    quote: "Same work. Same responsibility. Smaller salary.",
+    body: "That's not \u201Ccompany policy.\u201D",
+    law: [
+      "The Constitution directs equal pay for equal work, and the Code on Wages prohibits wage discrimination based on gender.",
     ],
   },
   {
     icon: "🛡️",
-    title: "OSH Code, 2020",
-    items: [
-      "Safe workplace — hard hats are not optional fashion accessories",
-      "Weekly off — at least one day to remember what sunlight looks like",
-      "Annual leave — because even your laptop needs a reboot occasionally",
+    title: "Right to Dignity at Work",
+    category: "dignity",
+    article: "Constitution Article 21",
+    quote: "Being shouted at. Publicly insulted. Threatened with termination.",
+    body: "Forced to tolerate humiliation. None of this is \u201Coffice culture.\u201D",
+    law: [
+      "Every worker has the constitutional right to live and work with dignity.",
     ],
   },
   {
-    icon: "📋",
-    title: "Social Security Code, 2020",
-    items: [
-      "EPF coverage — your future self will thank you, unlike your current employer",
-      "ESIC — medical benefits that actually cover medical things",
-      "Maternity benefit — 26 weeks paid, because growing a human is apparently work",
+    icon: "🚫",
+    title: "Sexual Harassment is Illegal",
+    category: "dignity",
+    article: "POSH Act, 2013",
+    quote: "\u201CIt's just a joke.\u201D \u201CNo need to make it an issue.\u201D",
+    body: "Silence protects the harasser — not the employee.",
+    law: [
+      "Employers with the required workforce must establish an Internal Complaints Committee, investigate complaints, and provide a safe workplace.",
+    ],
+  },
+  {
+    icon: "💸",
+    title: "PF Deducted But Never Deposited",
+    category: "wages",
+    article: "EPF & MP Act, 1952",
+    quote: "Every month your salary shows: PF Deduction \u2713. But your EPF account shows: \u20B90.",
+    body: "Someone is keeping money that belongs to you.",
+    law: [
+      "If PF is deducted, the employer must deposit it with EPFO within the prescribed time. Failure can lead to recovery, penalties, and prosecution.",
+    ],
+  },
+  {
+    icon: "🚪",
+    title: "You Cannot Be Forced to Stay",
+    category: "freedom",
+    article: "Constitution Article 23",
+    quote: "\u201CYou can't resign.\u201D \u201CYou must serve six months.\u201D \u201CWe won't give relieving documents.\u201D",
+    body: "Employment is not imprisonment.",
+    law: [
+      "Forced labour is prohibited under Article 23. Employers cannot compel someone to continue working against their will.",
     ],
   },
   {
     icon: "💼",
-    title: "Industrial Relations, 2020",
-    items: [
-      "Form trade unions — because WhatsApp groups don't count",
-      "Collective bargaining — strength in numbers, literally",
-      "Fair layoff procedure — they can't just ghost you after 20 years",
+    title: "No Appointment Letter",
+    category: "dignity",
+    article: "Industrial Employment (Standing Orders) Act + State Rules",
+    quote: "No appointment letter. No designation. No written salary. No proof.",
+    body: "That's exactly how workers lose their rights.",
+    law: [
+      "Many establishments are legally required to provide written employment terms and maintain employment records.",
+    ],
+  },
+  {
+    icon: "🤰",
+    title: "Pregnancy Should Never Cost You Your Job",
+    category: "dignity",
+    article: "Maternity Benefit Act, 1961",
+    quote: "Pregnant? Congratulations.",
+    body: "You should not have to choose between your child and your career.",
+    law: [
+      "Eligible women are entitled to maternity benefits, and employers cannot dismiss them merely because of pregnancy.",
+    ],
+  },
+  {
+    icon: "🚑",
+    title: "Workplace Injury Isn't \u201CYour Problem\u201D",
+    category: "freedom",
+    article: "Employees' Compensation Act, 1923",
+    quote: "Injured at work? Your employer doesn't get to say, \u201CThat's unfortunate.\u201D",
+    body: "They have legal responsibilities.",
+    law: [
+      "Employers must compensate workers for injuries sustained in the course of employment — including medical costs and lost wages.",
     ],
   },
 ];
 
-const KNOW_YOUR_RIGHTS = [
+const RIGHT_CATEGORIES = [
   {
-    number: "01",
-    title: "Minimum Wage is NOT Optional",
-    body: "Your employer must pay at least the minimum wage. 'But we're like a family here' is not a legal tender. If you're paid less, you're not underpaid — you're being robbed with extra steps.",
+    id: "hours",
+    icon: "⏰",
+    label: "YOUR HOURS",
+    blurb: "How long they make you work — and what that's supposed to cost them.",
+    accent: "#a16207",
+    soft: "rgba(161,98,7,0.10)",
   },
   {
-    number: "02",
-    title: "No Contract? No Work!",
-    body: "No written appointment letter? That's not 'informal culture' — that's illegal. The law demands written terms. Your employer demands silence. Choose wisely.",
+    id: "wages",
+    icon: "💰",
+    label: "YOUR WAGES",
+    blurb: "The money they owe you. On time. In full. Every rupee of it.",
+    accent: "#1f5a2e",
+    soft: "rgba(31,90,46,0.10)",
   },
   {
-    number: "03",
-    title: "Overtime = DOUBLE Pay",
-    body: "Beyond 9 hours a day or 48 hours a week? That's double pay territory. 'We need you to stay late' is not a get-out-of-paying card. Print the labour code. Frame it. Gift it to your manager.",
+    id: "dignity",
+    icon: "🛡️",
+    label: "YOUR DIGNITY",
+    blurb: "How they treat you at work is not a matter of opinion. It's law.",
+    accent: "#8b1a1a",
+    soft: "rgba(139,26,26,0.10)",
   },
   {
-    number: "04",
-    title: "Sexual Harassment is a CRIME",
-    body: "Every employer MUST have an Internal Complaints Committee. If they don't, they're breaking the law. Your right to a safe workplace is not negotiable — unlike your salary apparently.",
-  },
-];
-
-const RESOURCES = [
-  {
-    title: "Helpline Numbers",
-    accent: "var(--color-saffron-deep)",
-    items: [
-      { label: "Central Labour Helpline", value: "1800-111-669" },
-      { label: "Women Helpline", value: "181" },
-      { label: "ESIC Helpline", value: "1800-11-8899" },
-      { label: "EPFO Helpline", value: "1800-118-005" },
-    ],
-  },
-  {
-    title: "Portals & Apps",
-    accent: "var(--color-green)",
-    items: [
-      { label: "EPF Passbook", value: "umang.gov.in" },
-      { label: "ESIC Portal", value: "esic.gov.in" },
-      { label: "Shram Suvidha", value: "shramsuvidha.gov.in" },
-      { label: "NCLT", value: "nclt.gov.in" },
-    ],
-  },
-  {
-    title: "Legal Aid",
-    accent: "var(--color-blood)",
-    items: [
-      { label: "National Legal Services", value: "nalsa.gov.in" },
-      { label: "Free Legal Aid", value: "15100" },
-      { label: "Labour Commissioner", value: "State Portal" },
-    ],
+    id: "freedom",
+    icon: "🚪",
+    label: "YOUR FREEDOM & SAFETY",
+    blurb: "You can leave. You must be safe. Neither is up for negotiation.",
+    accent: "#28324f",
+    soft: "rgba(40,50,79,0.10)",
   },
 ];
 
@@ -156,10 +184,10 @@ function Navbar() {
     >
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", minHeight: 76, padding: "14px var(--gutter)" }}>
         <a href="#" style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/logo.png" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-ink)" }} />
+          <img src="/logo.png" alt="Majboor Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid var(--color-ink)" }} />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontFamily: "var(--font-display)", fontSize: 20, lineHeight: 0.94 }}>
-              <span style={{ color: "var(--color-blood)" }}>Dihadi</span>{" "}
+              <span style={{ color: "var(--color-blood)" }}>Majboor</span>{" "}
               <span>Janta Party</span>
             </span>
             <span style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.16em", textTransform: "uppercase", color: "var(--color-saffron-deep)", fontSize: 10 }}>
@@ -351,12 +379,9 @@ function HeroSection() {
             lineHeight: 0.88,
           }}
         >
-          YOUR SWEAT.{" "}
-          <span style={{ color: "var(--color-saffron-deep)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-            THEIR WEALTH.
-          </span>{" "}
+          MAJBOOR HAI. MAJDOOR HAI.{" "}
           <span style={{ color: "var(--color-green)" }}>
-            DEMAND YOUR DUES.
+            Let&apos;s not do overtime only, let&apos;s come together and speak.
           </span>
         </h1>
 
@@ -370,15 +395,15 @@ function HeroSection() {
             lineHeight: 1.6,
           }}
         >
-          You have rights. Your boss hopes you never find out. This site exists to ruin their plan. No legal jargon. No fine print. Just the law — in a language your HR department prays you never read.
+          You&apos;ve done enough overtime for free. Now let&apos;s do the asking. You have rights — your boss hopes you never find out. No legal jargon. No fine print. Just the law, in a language your HR department prays you never read.
         </p>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, marginBottom: 56 }}>
           <a href="#rights" className="btn-primary">
             ARM YOURSELF WITH THE LAW →
           </a>
-          <a href="#report" className="btn-secondary">
-            REPORT EXPLOITATION
+          <a href="#join" className="btn-secondary">
+            JOIN THE MOVEMENT
           </a>
         </div>
 
@@ -409,94 +434,6 @@ function HeroSection() {
       </div>
       {/* Tricolor ribbon below hero */}
       <div className="tricolor-ribbon-thick" />
-    </section>
-  );
-}
-
-function VisionSection() {
-  return (
-    <section
-      style={{
-        background: "linear-gradient(180deg, var(--color-paper) 0, var(--color-paper-2) 100%)",
-        borderBottom: "2px solid var(--color-ink)",
-        position: "relative",
-        overflow: "hidden",
-      }}
-      className="section-responsive-tall"
-    >
-      {/* Light logo background */}
-      <img
-        src="/logo.png"
-        alt=""
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "min(500px, 60vw)",
-          height: "min(500px, 60vw)",
-          borderRadius: "50%",
-          objectFit: "cover",
-          opacity: 0.06,
-          pointerEvents: "none",
-        }}
-      />
-      <div className="container animate-section" style={{ position: "relative", zIndex: 1 }}>
-        <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <span className="eyebrow">Chapter One — Filed Under: General Disgruntlement.</span>
-
-          <h2
-            className="section-title"
-            style={{ fontSize: "clamp(36px, 5.5vw, 68px)", margin: "0 0 24px" }}
-          >
-            Our Movement&apos;s{" "}
-            <span className="highlight-text-saffron">
-              Vision.
-            </span>
-          </h2>
-        </div>
-
-        <div style={{ maxWidth: 720, margin: "0 auto", display: "grid", gap: 24 }}>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
-            Millions of workers in India sign contracts they cannot read, accept wages below the minimum, and suffer in silence — because nobody told them the law exists. The system runs on your ignorance. We&apos;re here to weaponize the truth.
-          </p>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, textAlign: "center" }}>
-            This platform exists to shatter that silence. No legal jargon. No fine print. Just clear, actionable knowledge of what you are owed — written in a language your HR department hopes you never learn.
-          </p>
-        </div>
-
-        <div style={{ marginTop: 56, display: "flex", justifyContent: "center" }}>
-          <div
-            className="vision-callout"
-            style={{
-              border: "3px solid var(--color-ink)",
-              boxShadow: "8px 8px 0 var(--color-ink)",
-              background: "var(--color-ink)",
-              color: "var(--color-paper)",
-              textAlign: "center",
-              position: "relative",
-              overflow: "hidden",
-            }}
-          >
-            <div className="tricolor-ribbon" style={{ position: "absolute", top: 0, left: 0, right: 0 }} />
-            <span
-              style={{
-                fontFamily: "var(--font-display)",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                fontSize: "clamp(18px, 2.5vw, 24px)",
-                fontWeight: 400,
-                lineHeight: 1.2,
-              }}
-            >
-              KNOWLEDGE IS YOURS.{" "}
-              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-                THEY CAN&apos;T REVOKE IT.
-              </span>
-            </span>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
@@ -565,7 +502,7 @@ function LogoBanner() {
             }}
           >
             <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
-            DIHADI JANTA PARTY — EST. 2026
+            MAJBOOR JANTA PARTY — EST. 2026
             <span style={{ width: 40, height: 1, background: "var(--color-saffron)", display: "inline-block" }} />
           </div>
         </div>
@@ -574,7 +511,7 @@ function LogoBanner() {
         <div style={{ flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <img
             src="/logo.png"
-            alt="Dihadi Janta Party"
+            alt="Majboor Janta Party"
             className="logo-banner-img"
             style={{
               height: "min(320px, 40vw)",
@@ -592,515 +529,247 @@ function LogoBanner() {
 }
 
 function RightsGrid() {
+  const [activeCat, setActiveCat] = useState(RIGHT_CATEGORIES[0].id);
+  const catRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("data-cat");
+            if (id) setActiveCat(id);
+          }
+        }
+      },
+      { rootMargin: "-120px 0px -65% 0px" }
+    );
+    catRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToCat = (id: string) => {
+    const el = document.getElementById(`rights-cat-${id}`);
+    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   return (
     <section id="rights" className="section">
-      <div className="container">
-        {/* Constitutional Rights */}
-        <div className="animate-section" style={{ marginBottom: 96 }}>
+      <div className="container" style={{ maxWidth: "none" }}>
+        {/* Section header */}
+        <div className="animate-section" style={{ marginBottom: 48 }}>
           <div
             className="card-header-responsive"
             style={{
               border: "3px solid var(--color-ink)",
               boxShadow: "8px 8px 0 var(--color-ink)",
               background: "var(--color-paper)",
-              marginBottom: 48,
             }}
           >
-            <span className="eyebrow">Legal Framework — Yes, It Actually Exists</span>
-            <h2 className="section-title" style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: "0 0 16px" }}>
-              Constitutional{" "}
-              <span style={{ color: "var(--color-blood)" }}>Rights</span>
+            <span className="eyebrow">The Law You Didn't Know You Had</span>
+            <h2 className="section-title" style={{ fontSize: "clamp(40px, 5.5vw, 64px)", margin: "0 0 16px" }}>
+              MAJDOOR{" "}
+              <span style={{ color: "var(--color-blood)" }}>BROS</span>
+              <br />
+              YOUR{" "}
+              <span className="highlight-text-saffron">CORRECT</span> RIGHTS
             </h2>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 19, lineHeight: 1.6, maxWidth: 700 }}>
-              These are NOT privileges your boss graciously bestows upon you. They are constitutional guarantees. Your employer&apos;s opinion is irrelevant. The Constitution says so.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(340px, 100%), 1fr))", gap: 20 }}>
-            {RIGHTS.map((right, i) => (
-              <div
-                key={right.title}
-                className={`animate-section stagger-${Math.min(i + 1, 6)} ${right.span ? "right-card-span" : ""}`}
-                style={{
-                  border: right.span ? "3px solid var(--color-blood)" : "2px solid var(--color-ink)",
-                  boxShadow: right.span ? "8px 8px 0 var(--color-blood)" : "6px 6px 0 var(--color-ink)",
-                  background: right.span ? "var(--color-blood)" : "var(--color-paper)",
-                  color: right.span ? "var(--color-paper)" : "var(--color-ink)",
-                  padding: "32px 28px",
-                  gridColumn: right.span ? "span 2" : undefined,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 16,
-                  transition: "all 0.15s ease",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                  <span style={{ fontSize: 40 }}>{right.icon}</span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      fontSize: 11,
-                      color: right.span ? "var(--color-paper)" : "var(--color-saffron-deep)",
-                      border: `1px solid ${right.span ? "var(--color-paper)" : "var(--color-saffron-deep)"}`,
-                      padding: "5px 12px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {right.article}
-                  </span>
-                </div>
-                <h3 style={{
-                  fontFamily: "var(--font-display)",
-                  letterSpacing: "0.02em",
-                  textTransform: "uppercase",
-                  fontSize: 22,
-                  lineHeight: 1.1,
-                }}>
-                  {right.title}
-                </h3>
-                <p style={{
-                  fontSize: 15,
-                  lineHeight: 1.6,
-                  flex: 1,
-                  color: right.span ? "rgba(244,235,215,0.85)" : "var(--color-ink-2)",
-                }}>
-                  {right.desc}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
 
-        {/* Labour Codes */}
-        <div className="animate-section">
-          <div
-            className="card-header-responsive"
-            style={{
-              border: "3px solid var(--color-ink)",
-              boxShadow: "8px 8px 0 var(--color-ink)",
-              background: "var(--color-ink)",
-              color: "var(--color-paper)",
-              marginBottom: 48,
-            }}
-          >
-            <span className="eyebrow eyebrow-on-dark">Statutory Protection — Laws That Actually Have Teeth</span>
-            <h2 className="section-title" style={{ fontSize: "clamp(36px, 5vw, 56px)", margin: "0 0 16px", color: "var(--color-paper)" }}>
-              The{" "}
-              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-                Labour Codes
-              </span>
-            </h2>
-            <p style={{ color: "rgba(244,235,215,0.7)", fontSize: 19, lineHeight: 1.6, maxWidth: 700 }}>
-              Four codes that govern every workplace in India. Your employer&apos;s lawyer has read them. Now it&apos;s your turn. Ignorance of the law is not an excuse — it&apos;s their business model.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(480px, 100%), 1fr))", gap: 20 }}>
-            {STATUTORY_RIGHTS.map((code, i) => (
-              <div
-                key={code.title}
-                className={`animate-section stagger-${Math.min(i + 1, 4)}`}
-                style={{
-                  border: "3px solid var(--color-ink)",
-                  boxShadow: "8px 8px 0 var(--color-saffron-deep)",
-                  background: "var(--color-paper)",
-                  padding: "32px 32px",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 24, paddingBottom: 20, borderBottom: "2px solid var(--color-ink)" }}>
-                  <span style={{
-                    fontSize: 32,
-                    width: 52,
-                    height: 52,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "var(--color-saffron-deep)",
-                    color: "var(--color-paper)",
-                    border: "2px solid var(--color-ink)",
-                  }}>{code.icon}</span>
-                  <h3 style={{ fontFamily: "var(--font-display)", letterSpacing: "0.04em", textTransform: "uppercase", fontSize: 20, fontWeight: 700, lineHeight: 1.1 }}>
-                    {code.title}
-                  </h3>
-                </div>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                  {code.items.map((item) => (
-                    <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 12, fontSize: 15, lineHeight: 1.55 }}>
-                      <span style={{
-                        color: "var(--color-saffron-deep)",
-                        fontFamily: "var(--font-display)",
-                        fontWeight: 700,
-                        flexShrink: 0,
-                        marginTop: 2,
-                        fontSize: 16,
-                      }}>→</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function KnowYourRightsSection() {
-  return (
-    <section id="know-your-rights" className="section section-dark section-responsive" style={{ padding: "120px 0" }}>
-      <div className="container">
-        <div className="animate-section" style={{ marginBottom: 72 }}>
-          <span className="eyebrow eyebrow-on-dark">Things Your Employer Hopes You Never Read</span>
-          <h2
-            className="section-title"
-            style={{
-              fontSize: "clamp(44px, 7vw, 88px)",
-              color: "var(--color-paper)",
-              margin: "0 0 24px",
-              maxWidth: "18ch",
-            }}
-          >
-            READ <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>THEM.</span>{" "}
-            <span className="highlight-text" style={{ color: "var(--color-blood)" }}>USE THEM.</span>
-          </h2>
-          <p style={{ color: "rgba(244,235,215,0.75)", fontSize: 18, lineHeight: 1.6, maxWidth: 560 }}>
-            Print this page. Paste it on the break room wall. Screenshot it. Send it to every worker you know. Knowledge is the one thing they can&apos;t take back once it spreads.
-          </p>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(480px, 100%), 1fr))", gap: 20 }}>
-          {KNOW_YOUR_RIGHTS.map((item, i) => (
-            <div
-              key={item.number}
-              className={`kyr-card animate-section stagger-${Math.min(i + 1, 6)}`}
-              style={{
-                padding: "32px 28px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 20,
-                position: "relative",
-                overflow: "hidden",
-              }}
+        {/* Sticky category rail */}
+        <div className="rights-rail animate-section" aria-label="Rights categories">
+          {RIGHT_CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              type="button"
+              className={`rights-pill ${activeCat === cat.id ? "is-active" : ""}`}
+              style={{ "--cat-accent": cat.accent } as React.CSSProperties}
+              onClick={() => scrollToCat(cat.id)}
             >
-              {/* Large watermark number */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: -16,
-                  bottom: -24,
-                  fontFamily: "var(--font-display)",
-                  fontSize: "140px",
-                  lineHeight: 1,
-                  color: "var(--color-blood)",
-                  opacity: 0.15,
-                  pointerEvents: "none",
-                }}
-              >
-                {item.number}
-              </div>
+              <span style={{ fontSize: 16 }}>{cat.icon}</span>
+              <span>{cat.label}</span>
+              <span className="rights-pill-count">
+                {RIGHTS.filter((r) => r.category === cat.id).length}
+              </span>
+            </button>
+          ))}
+        </div>
 
-              <div style={{ position: "relative", zIndex: 1 }}>
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    letterSpacing: "0.16em",
-                    textTransform: "uppercase",
-                    color: "var(--color-saffron-deep)",
-                    fontSize: 12,
-                    display: "block",
-                    marginBottom: 16,
-                  }}
-                >
-                  KNOW / {item.number}
+        {/* Category groups */}
+        {RIGHT_CATEGORIES.map((cat, ci) => {
+          const items = RIGHTS.filter((r) => r.category === cat.id);
+          return (
+            <div
+              key={cat.id}
+              id={`rights-cat-${cat.id}`}
+              data-cat={cat.id}
+              ref={(el) => {
+                catRefs.current[ci] = el;
+              }}
+              className="rights-cat"
+              style={{ "--cat-accent": cat.accent, "--cat-soft": cat.soft } as React.CSSProperties}
+            >
+              <div className="rights-cat-header">
+                <span className="rights-cat-icon">{cat.icon}</span>
+                <div>
+                  <h3>{cat.label}</h3>
+                  <p>{cat.blurb}</p>
+                </div>
+                <span className="rights-cat-count">
+                  {items.length} RIGHT{items.length > 1 ? "S" : ""}
                 </span>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: "var(--color-paper)",
-                    margin: "0 0 12px",
-                    fontSize: "clamp(22px, 2.5vw, 30px)",
-                    lineHeight: 1.1,
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {item.title}
-                </h3>
-                <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 16, lineHeight: 1.6 }}>
-                  {item.body}
-                </p>
               </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
-function ReportSection() {
-  return (
-    <section id="report" className="section section-responsive" style={{ padding: "120px 0" }}>
-      <div className="container">
-        <div className="animate-section" style={{ marginBottom: 64 }}>
-          <span className="eyebrow">Your Silence Is Their Business Model</span>
-          <h2
-            className="section-title"
-            style={{ fontSize: "clamp(40px, 6vw, 80px)", margin: "0 0 24px" }}
-          >
-            REPORT{" "}
-            <span className="highlight-text-saffron">
-              EXPLOITATION
-            </span>
-          </h2>
-          <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.7, maxWidth: 640 }}>
-            Most workers don&apos;t even know exploitation has a name. We&apos;re here to document how deep it runs — across industries, across cities, across companies that bet on your silence. Your report helps us see the full picture.
-          </p>
-        </div>
-
-        {/* Anonymity Card */}
-        <div className="animate-section" style={{ display: "flex", justifyContent: "center", marginBottom: 32 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 20,
-              padding: "28px 48px",
-              border: "3px solid var(--color-green)",
-              boxShadow: "8px 8px 0 var(--color-green)",
-              background: "var(--color-green)",
-              color: "var(--color-paper)",
-              maxWidth: 640,
-              width: "100%",
-            }}
-          >
-            <span style={{
-              fontSize: 36,
-              width: 60,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "var(--color-paper)",
-              color: "var(--color-green)",
-              border: "2px solid var(--color-paper)",
-              borderRadius: "50%",
-              flexShrink: 0,
-            }}>🔒</span>
-            <div>
-              <h3 style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(18px, 2vw, 24px)",
-                textTransform: "uppercase",
-                lineHeight: 1.1,
-                margin: "0 0 8px",
-              }}>
-                100% ANONYMOUS
-              </h3>
-              <p style={{ color: "rgba(244,235,215,0.9)", fontSize: 15, lineHeight: 1.6, margin: 0 }}>
-                We don&apos;t need your name, phone, or email. We don&apos;t need to know who you are. Just tell us what happened — the date, the place, the violation. The truth doesn&apos;t need an identity.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Single Report Button */}
-        <div className="animate-section" style={{ display: "flex", justifyContent: "center", marginBottom: 56 }}>
-          <a
-            href="https://tally.so/r/2EzPJA"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 20,
-              padding: "28px 48px",
-              border: "3px solid var(--color-blood)",
-              boxShadow: "8px 8px 0 var(--color-blood)",
-              background: "var(--color-blood)",
-              color: "var(--color-paper)",
-              textDecoration: "none",
-              transition: "all 0.15s ease",
-              cursor: "pointer",
-              maxWidth: 640,
-              width: "100%",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translate(-2px, -2px)";
-              e.currentTarget.style.boxShadow = "10px 10px 0 var(--color-blood)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "none";
-              e.currentTarget.style.boxShadow = "8px 8px 0 var(--color-blood)";
-            }}
-          >
-            <span style={{
-              fontSize: 36,
-              width: 60,
-              height: 60,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: "var(--color-paper)",
-              color: "var(--color-blood)",
-              border: "2px solid var(--color-paper)",
-              borderRadius: "50%",
-              flexShrink: 0,
-            }}>✊</span>
-            <div>
-              <h3 style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(20px, 2.5vw, 28px)",
-                textTransform: "uppercase",
-                lineHeight: 1.1,
-                margin: "0 0 6px",
-              }}>
-                LOG THEIR ILL WORK
-              </h3>
-              <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 14, lineHeight: 1.5, margin: 0 }}>
-                Overtime, unpaid wages, harassment, discrimination — one form, all violations.
-              </p>
-            </div>
-            <span style={{
-              fontFamily: "var(--font-condensed)",
-              fontSize: 24,
-              fontWeight: 700,
-              marginLeft: "auto",
-              flexShrink: 0,
-            }}>
-              →
-            </span>
-          </a>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="animate-section" style={{ maxWidth: 800, margin: "0 auto" }}>
-          <div
-            style={{
-              border: "3px solid var(--color-ink)",
-              boxShadow: "8px 8px 0 var(--color-ink)",
-              background: "var(--color-ink)",
-              color: "var(--color-paper)",
-              padding: "40px 36px",
-              textAlign: "center",
-            }}
-          >
-            <span style={{
-              fontFamily: "var(--font-mono)",
-              letterSpacing: "0.2em",
-              textTransform: "uppercase",
-              color: "var(--color-saffron-deep)",
-              fontSize: 12,
-              display: "block",
-              marginBottom: 20,
-            }}>
-              WHY WE&apos;RE COLLECTING THIS DATA
-            </span>
-            <h3
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(24px, 3vw, 36px)",
-                textTransform: "uppercase",
-                lineHeight: 1.1,
-                margin: "0 0 24px",
-              }}
-            >
-              THE{" "}
-              <span style={{ color: "var(--color-saffron-2)", fontFamily: "Georgia, serif", fontStyle: "italic" }}>
-                EXPLOITATION INDEX
-              </span>
-            </h3>
-            <p style={{ color: "rgba(244,235,215,0.8)", fontSize: 17, lineHeight: 1.7, maxWidth: 600, margin: "0 auto 28px" }}>
-              Right now, nobody knows the true scale of workplace exploitation in India. We don&apos;t know which industries are the worst. We don&apos;t know how many workers are silently bearing the cost. Your report helps us see what the system is designed to keep invisible.
-            </p>
-            <div style={{ borderTop: "2px solid rgba(244,235,215,0.15)", paddingTop: 24 }}>
-              <p style={{ color: "rgba(244,235,215,0.6)", fontSize: 15, lineHeight: 1.6, fontStyle: "italic" }}>
-                &ldquo;You can&apos;t fix what you refuse to see. First, we document. Then, the picture speaks for itself.&rdquo;
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ResourcesSection() {
-  return (
-    <section id="resources" className="section section-dark section-responsive" style={{ padding: "120px 0" }}>
-      <div className="container">
-        <div className="animate-section resources-header" style={{ marginBottom: 72, paddingBottom: 40, borderBottom: "2px solid rgba(244,235,215,0.15)" }}>
-          <div style={{ flex: 1 }}>
-            <span className="eyebrow eyebrow-on-dark">Numbers That Actually Help</span>
-            <h2
-              className="section-title"
-              style={{ fontSize: "clamp(36px, 5.5vw, 68px)", color: "var(--color-paper)", margin: 0 }}
-            >
-              <span style={{ color: "var(--color-saffron-2)" }}>HELPLINES</span>{" "}
-              & RESOURCES
-            </h2>
-          </div>
-          <div style={{ flex: 1, textAlign: "right" }}>
-            <p style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--color-paper)", fontSize: 16, fontWeight: 700, lineHeight: 1.4, opacity: 0.85 }}>
-              ONE PHONE CALL CAN STOP EXPLOITATION. YOUR BOSS&apos;S PR TEAM CAN&apos;T SPIN AWAY A FORMAL LABOUR COMPLAINT.
-            </p>
-          </div>
-        </div>
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(360px, 100%), 1fr))", gap: 24 }}>
-          {RESOURCES.map((category, i) => (
-            <div
-              key={category.title}
-              className={`animate-section stagger-${Math.min(i + 1, 3)}`}
-              style={{
-                border: "2px solid rgba(244,235,215,0.2)",
-                borderTop: `3px solid ${category.accent}`,
-                background: "rgba(244,235,215,0.04)",
-                padding: "32px 28px",
-                display: "flex",
-                flexDirection: "column",
-                gap: 28,
-              }}
-            >
-              <h3
-                style={{
-                  fontFamily: "var(--font-display)",
-                  color: category.accent,
-                  textTransform: "uppercase",
-                  fontSize: "clamp(22px, 2.5vw, 28px)",
-                  lineHeight: 1,
-                  margin: 0,
-                  paddingBottom: 20,
-                  borderBottom: "2px solid rgba(244,235,215,0.15)",
-                }}
-              >
-                {category.title}
-              </h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                {category.items.map((item) => (
-                  <div key={item.label}>
-                    <div style={{ fontFamily: "var(--font-condensed)", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,235,215,0.6)", fontSize: 12, fontWeight: 600, marginBottom: 6 }}>
-                      {item.label}
-                    </div>
+              <div className="rights-grid">
+                {items.map((right) => {
+                  const num = RIGHTS.indexOf(right) + 1;
+                  return (
                     <div
-                      style={{
-                        fontFamily: "var(--font-display)",
-                        color: "var(--color-saffron-2)",
-                        fontSize: "clamp(18px, 2vw, 24px)",
-                        lineHeight: 1.2,
-                      }}
+                      key={right.title}
+                      className={`right-card animate-section stagger-${Math.min(num, 6)}`}
                     >
-                      {item.value}
+                      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", gap: 16, flex: 1 }}>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                          <span
+                            style={{
+                              fontFamily: "var(--font-mono)",
+                              letterSpacing: "0.14em",
+                              textTransform: "uppercase",
+                              fontSize: 12,
+                              color: "var(--cat-accent)",
+                              fontWeight: 600,
+                              whiteSpace: "nowrap",
+                            }}
+                          >
+                            {String(num).padStart(2, "0")} / {cat.label}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: 34,
+                              lineHeight: 1,
+                              flexShrink: 0,
+                            }}
+                            aria-hidden="true"
+                          >
+                            {right.icon}
+                          </span>
+                        </div>
+
+                        <h3
+                          style={{
+                            fontFamily: "var(--font-display)",
+                            letterSpacing: "0.02em",
+                            textTransform: "uppercase",
+                            fontSize: "clamp(24px, 2.4vw, 30px)",
+                            lineHeight: 1.05,
+                            margin: "4px 0 0",
+                          }}
+                        >
+                          {right.title}
+                        </h3>
+
+                        <p
+                          style={{
+                            fontFamily: "var(--font-condensed)",
+                            fontSize: "clamp(24px, 2.2vw, 28px)",
+                            lineHeight: 1.15,
+                            fontWeight: 600,
+                            color: "var(--cat-accent)",
+                            margin: "10px 0 0",
+                          }}
+                        >
+                          {right.quote}
+                        </p>
+
+                        <p style={{
+                          fontSize: 17,
+                          lineHeight: 1.6,
+                          color: "var(--color-ink-2)",
+                          margin: "2px 0 0",
+                        }}>
+                          {right.body}
+                        </p>
+
+                        <div
+                          style={{
+                            fontSize: "clamp(15px, 1.3vw, 16px)",
+                            lineHeight: 1.6,
+                            color: "var(--color-paper)",
+                            background: "var(--color-green)",
+                            borderTop: "3px solid var(--color-ink)",
+                            marginTop: "auto",
+                            marginLeft: -36,
+                            marginRight: -36,
+                            marginBottom: -36,
+                            padding: "20px 36px 24px",
+                          }}
+                        >
+                          <p
+                            style={{
+                              margin: "0 0 10px",
+                              fontFamily: "var(--font-condensed)",
+                              letterSpacing: "0.16em",
+                              color: "var(--color-gold)",
+                              fontSize: 16,
+                            }}
+                          >
+                            <strong>THE LAW</strong>
+                          </p>
+                          <p
+                            style={{
+                              margin: "0 0 10px",
+                              fontFamily: "var(--font-mono)",
+                              letterSpacing: "0.06em",
+                              textTransform: "uppercase",
+                              fontSize: 12,
+                              color: "rgba(244,235,215,0.85)",
+                              borderBottom: "1px solid rgba(244,235,215,0.25)",
+                              paddingBottom: 10,
+                            }}
+                          >
+                            📜 {right.article}
+                          </p>
+                          <ul style={{ margin: 0, padding: 0, listStyle: "none" }}>
+                            {right.law.map((point) => (
+                              <li
+                                key={point}
+                                style={{
+                                  padding: "8px 0 8px 28px",
+                                  position: "relative",
+                                  fontFamily: "var(--font-condensed)",
+                                  fontSize: "clamp(18px, 1.6vw, 21px)",
+                                  lineHeight: 1.35,
+                                  fontWeight: 600,
+                                  color: "#ffffff",
+                                }}
+                              >
+                                <span
+                                  style={{
+                                    position: "absolute",
+                                    left: 0,
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    color: "var(--color-gold)",
+                                    fontSize: 22,
+                                    lineHeight: 1,
+                                  }}
+                                >
+                                  ▸
+                                </span>
+                                {point}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );
@@ -1148,8 +817,8 @@ function JoinSection() {
           </h2>
 
           <div style={{ borderTop: "2px solid var(--color-ink)", borderBottom: "2px solid var(--color-ink)", padding: "28px 0", marginBottom: 40 }}>
-            <p style={{ color: "var(--color-ink-2)", fontSize: 18, lineHeight: 1.65, maxWidth: 640, margin: "0 auto" }}>
-              Knowledge spreads. Exploitation ends. Send this to your colleague, your domestic help, your factory supervisor, your gig-worker neighbour. The more people who know, the harder it is to exploit. That&apos;s not a slogan — that&apos;s game theory.
+            <p style={{ color: "var(--color-ink)", fontSize: 19, lineHeight: 1.65, maxWidth: 640, margin: "0 auto", fontWeight: 500 }}>
+              Fill the form. Let us know you are ready to speak for right and truth. Fill the form below — it takes two minutes, and you don&apos;t even need to give your name.
             </p>
           </div>
 
@@ -1208,7 +877,7 @@ function JoinSection() {
                   100% ANONYMOUS
                 </h3>
                 <p style={{ color: "rgba(244,235,215,0.9)", fontSize: 14, lineHeight: 1.5, margin: 0 }}>
-                  We don&apos;t need your name, phone, or email. We don&apos;t need to know who you are. Just tell us what happened — the date, the place, the violation. The truth doesn&apos;t need an identity.
+                  We don&apos;t need your name, phone, or email. We don&apos;t need to know who you are. Just tell us you&apos;re in — your district, your industry, how you want to help. A movement doesn&apos;t need your identity. It needs your voice.
                 </p>
               </div>
             </div>
@@ -1243,9 +912,9 @@ function Footer() {
           {/* Brand */}
           <div>
             <div style={{ marginBottom: 28, display: "flex", alignItems: "center", gap: 12 }}>
-              <img src="/logo.png" alt="Dihadi Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(244,235,215,0.3)" }} />
+              <img src="/logo.png" alt="Majboor Janta Party" style={{ width: 56, height: 56, borderRadius: "50%", objectFit: "cover", border: "2px solid rgba(244,235,215,0.3)" }} />
               <span style={{ fontFamily: "var(--font-display)", fontSize: 24, lineHeight: 0.94 }}>
-                <span style={{ color: "var(--color-blood)" }}>Dihadi</span>{" "}
+                <span style={{ color: "var(--color-blood)" }}>Majboor</span>{" "}
                 <span>Janta Party</span>
               </span>
             </div>
@@ -1263,8 +932,6 @@ function Footer() {
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
                   { label: "Constitutional Rights", href: "#rights" },
-                  { label: "Know Your Rights", href: "#know-your-rights" },
-                  { label: "Helplines", href: "#resources" },
                 ].map((link) => (
                   <li key={link.label}>
                     <a href={link.href} className="footer-link">
@@ -1281,7 +948,6 @@ function Footer() {
               </h4>
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 16 }}>
                 {[
-                  { label: "Report Exploitation", href: "#report" },
                   { label: "Join the Movement", href: "#join" },
                 ].map((link) => (
                   <li key={link.label}>
@@ -1305,7 +971,7 @@ function Footer() {
           }}
         >
           <p style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(244,235,215,0.4)", fontSize: 11 }}>
-            © {new Date().getFullYear()} Dihadi Janta Party · All Rants Reserved
+            © {new Date().getFullYear()} Majboor Janta Party · All Rants Reserved
           </p>
         </div>
       </div>
@@ -1319,12 +985,8 @@ export default function Home() {
       <Navbar />
       <Ticker />
       <HeroSection />
-      <VisionSection />
       <LogoBanner />
       <RightsGrid />
-      <KnowYourRightsSection />
-      <ReportSection />
-      <ResourcesSection />
       <JoinSection />
       <Footer />
     </main>

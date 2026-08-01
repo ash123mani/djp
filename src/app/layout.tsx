@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dihadijantaparty.vercel.app"),
-  title: "Dihadi Janta Party — Know Your Labour Rights",
+  title: "Majboor Janta Party — Know Your Labour Rights",
   description:
     "Rights Guaranteed by the Constitution. Protected by Labour Laws. A public resource for every worker. Funded by nothing. Sponsored by no one.",
   icons: {
@@ -11,21 +11,21 @@ export const metadata: Metadata = {
     apple: "/logo.png",
   },
   openGraph: {
-    title: "Dihadi Janta Party — Know Your Labour Rights",
+    title: "Majboor Janta Party — Know Your Labour Rights",
     description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
     images: [
       {
         url: "/logo.png",
         width: 800,
         height: 800,
-        alt: "Dihadi Janta Party",
+        alt: "Majboor Janta Party",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dihadi Janta Party — Know Your Labour Rights",
+    title: "Majboor Janta Party — Know Your Labour Rights",
     description: "Rights Guaranteed by the Constitution. Protected by Labour Laws. Know them. Use them. Protect them.",
     images: ["/logo.png"],
   },
