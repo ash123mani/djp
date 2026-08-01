@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/logo.png",
-        width: 800,
-        height: 800,
+        width: 1254,
+        height: 1254,
         alt: SITE.name,
       },
     ],
