@@ -824,16 +824,16 @@ function JoinSection() {
 
           <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 16, marginBottom: 40 }}>
             <a
-              href="https://tally.so/r/2EzPJA"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScel787JKfMlifZQ5Eh8ZZG0HWx8l9fWwUVvkX4Bhf8RxWebw/viewform?usp=publish-editor"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
               style={{ padding: "18px 36px", fontSize: 16 }}
             >
-              SHARE THE TRUTH
+              RAISE A VOICE
             </a>
-            <a href="https://tally.so/r/68G2eA" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ padding: "18px 36px", fontSize: 16 }}>
-              JOIN THE MOVEMENT
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScel787JKfMlifZQ5Eh8ZZG0HWx8l9fWwUVvkX4Bhf8RxWebw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ padding: "18px 36px", fontSize: 16 }}>
+              BECOME A VOICE
             </a>
           </div>
 
